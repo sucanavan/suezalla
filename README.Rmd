@@ -54,19 +54,23 @@ suezalla_palette("jam", n = 4)
 # Return 10 interpolated colours from the 'autumn' palette
 suezalla_palette("autumn", n = 10, type = "continuous")
 ```
+
 ---
+
 ## Fonts
 
-The `suezalla` package automatically loads the Roboto and XKCD fonts (if available) using the `sysfonts` and `showtext` packages. No manual steps are needed.
+The `suezalla` package automatically attempts to load custom fonts when attached:
 
-- Roboto is loaded from Google Fonts.
-- XKCD is loaded if you have installed `xkcd.ttf` in your system fonts folder or working directory.
+- **Roboto** is downloaded from Google Fonts and used in `theme_suezalla()`.
+- **XKCD** is loaded from your system font folder (e.g., `~/Library/Fonts/`, `~/.fonts/`, or Windows font directory) if `xkcd.ttf` is present.
+
+If the XKCD font is missing, the package will issue a startup message and fall back to system defaults.
 
 ---
 
 ## Quick examples
 
-### Classic theme with palette:
+### Classic theme with palette
 
 ```r
 library(suezalla)
@@ -87,17 +91,15 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
 ### Zombie theme example
 
 ```r
-# Requires xkcd font to be installed on your system
 library(suezalla)
 library(ggplot2)
 
-
 ggplot(mtcars, aes(y = wt, x = mpg)) + 
-  geom_point(aes(fill = cyl, size = cyl), shape = 21, alpha = 0.8) + 
+  geom_point(aes(fill = factor(cyl), size = cyl), shape = 21, alpha = 0.8) + 
   scale_fill_suezalla(palette_name = "zombie") + 
   theme_zombie() +
-  ggtitle("Theme Zombie") +
-  coord_capped_cart(bottom = 'both', left = 'both')
+  ggtitle("Zombie theme plot") +
+  lemon::coord_capped_cart(bottom = 'both', left = 'both')
 ```
 
 ---

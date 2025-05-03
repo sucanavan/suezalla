@@ -16,7 +16,5 @@ Imports:
     ggplot2,
     cowplot,
     lemon,
-    grDevices
-    extrafont
-    showtext
-    sysfont
+    showtext,
+    sysfonts
