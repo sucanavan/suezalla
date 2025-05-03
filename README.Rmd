@@ -16,8 +16,3 @@ Install directly from GitHub using `devtools`:
 ```r
 # install.packages("devtools") if necessary
 devtools::install_github("sucanavan/suezalla")
-
-Then knit this file (`README.md`) to display nicely on GitHub:
-
-```R
-rmarkdown::render("README.Rmd")
