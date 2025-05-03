@@ -52,6 +52,7 @@ theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
 #' @export
 #' @import cowplot
 #' @import lemon
+#' @importFrom lemon coord_capped_cart
 theme_zombie <- function(base_size = 12, base_family = "xkcd") {
   cowplot::theme_cowplot(font_family = base_family) +
     ggplot2::theme(
