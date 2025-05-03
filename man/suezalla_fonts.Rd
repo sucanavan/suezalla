@@ -2,7 +2,8 @@
 % Please edit documentation in R/theme_suezalla.R
 \name{suezalla_fonts}
 \alias{suezalla_fonts}
-\title{Load Roboto font for suezalla theme}
+\title{Suezalla custom ggplot2 theme
+Load Roboto font for suezalla theme}
 \usage{
 suezalla_fonts()
 }

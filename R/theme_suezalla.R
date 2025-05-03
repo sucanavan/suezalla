@@ -3,7 +3,22 @@
 #-------------------------------
 
 #' Suezalla custom ggplot2 theme
+
+#' Load Roboto font for suezalla theme
 #'
+#' Loads the Roboto Google font and enables `showtext` rendering for plots.
+#' Must be called before plotting for the Roboto font to apply.
+#'
+#' @export
+suezalla_fonts <- function() {
+  if (!requireNamespace("sysfonts", quietly = TRUE)) stop("Please install the 'sysfonts' package.")
+  if (!requireNamespace("showtext", quietly = TRUE)) stop("Please install the 'showtext' package.")
+
+  sysfonts::font_add_google("Roboto", "Roboto")
+  showtext::showtext_auto()
+}
+
+
 #' A clean, minimalistic ggplot2 theme designed to work well with Roboto font.
 #' Note: Use `suezalla_fonts()` before plotting to load and activate the Roboto font.
 #'
@@ -26,16 +41,4 @@ theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
     )
 }
 
-#' Load Roboto font for suezalla theme
-#'
-#' Loads the Roboto Google font and enables `showtext` rendering for plots.
-#' Must be called before plotting for the Roboto font to apply.
-#'
-#' @export
-suezalla_fonts <- function() {
-  if (!requireNamespace("sysfonts", quietly = TRUE)) stop("Please install the 'sysfonts' package.")
-  if (!requireNamespace("showtext", quietly = TRUE)) stop("Please install the 'showtext' package.")
 
-  sysfonts::font_add_google("Roboto", "Roboto")
-  showtext::showtext_auto()
-}
