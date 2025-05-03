@@ -16,6 +16,21 @@ minimal effort.
 
 ------------------------------------------------------------------------
 
+## Installation
+
+Install the development version of `suezalla` from GitHub using
+`devtools`:
+
+``` r
+# If not already installed
+install.packages("devtools")
+
+# Install suezalla
+devtools::install_github("sucanavan/suezalla")
+```
+
+------------------------------------------------------------------------
+
 ## Available palettes
 
 The following named palettes are available. Use them with
@@ -67,21 +82,6 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
 ```
 
 To view the plot, run this code in an R session.
-
-------------------------------------------------------------------------
-
-## Installation
-
-Install the development version of `suezalla` from GitHub using
-`devtools`:
-
-``` r
-# If not already installed
-install.packages("devtools")
-
-# Install suezalla
-devtools::install_github("sucanavan/suezalla")
-```
 
 ------------------------------------------------------------------------
 
