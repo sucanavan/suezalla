@@ -25,3 +25,10 @@ scale_fill_suezalla <- function(palette_name = "polaroid", n = NULL, type = "dis
     ggplot2::scale_fill_gradientn(colours = pal, ...)
   }
 }
+
+#' Fill scale for Zombie theme
+#'
+#' @export
+scale_fill_zombie <- function(n = NULL, ...) {
+  ggplot2::scale_fill_gradientn(colours = suezalla_zombie_palette(n), ...)
+}

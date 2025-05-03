@@ -7,11 +7,11 @@ output: github_document
 
 `suezalla` is a lightweight R package that provides:
 
-- Custom `ggplot2` themes: `theme_suezalla()` and `suez_theme_vintage()`
-- Several curated colour palettes inspired by polaroids, jam jars, retro aesthetics, and corporate tones
+- Custom `ggplot2` themes: `theme_suezalla()`, `theme_zombie()`, and `suez_theme_vintage()`
+- Several curated colour palettes inspired by polaroids, jam jars, retro aesthetics, zombies, and corporate tones
 - Custom scale functions: `scale_colour_suezalla()` and `scale_fill_suezalla()`
 
-These tools help you create clean, consistent visualizations with minimal effort.
+These tools help you create clean, consistent, or stylistically bold visualizations with minimal effort.
 
 ---
 
@@ -43,6 +43,7 @@ The following named palettes are available. Use them with `suezalla_palette()`, 
 | `lively2`   | Another bold and dynamic palette                     | `#DA4453`, `#F6BB42`, `#37BC98`, `#4A89DC`, `#E9573F`, `#8CC152`, `#3BAFDA`, `#967ADC` |
 | `retro`     | Nostalgic, mid-century colours                       | `#E7363C`, `#F56438`, `#FCAB20`, `#59AC99`, `#3E446E` |
 | `autumn`    | Warm seasonal tones                                  | `#388388`, `#4ABFBD`, `#8AB17D`, `#E9C46A`, `#F4A261`, `#E76F51` |
+| `zombie`    | Gritty, earthy tones ideal for bold plots            | `grey70`, `#F56438`, `#59AC99` |
 
 To preview or generate palettes in code:
 
@@ -56,9 +57,9 @@ suezalla_palette("autumn", n = 10, type = "continuous")
 
 ---
 
-## Quick example
+## Quick examples
 
-This example shows how to apply a custom palette and theme to a scatter plot using `ggplot2`.
+### Classic theme with palette:
 
 ```r
 library(suezalla)
@@ -76,9 +77,21 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   )
 ```
 
-To view the plot, run this code in an R session.
+### Zombie theme example
 
+```r
+# Requires xkcd font to be installed on your system
+library(suezalla)
+library(ggplot2)
+library(lemon)
 
+ggplot(mtcars, aes(y = wt, x = mpg)) + 
+  geom_point(aes(fill = cyl, size = cyl), shape = 21, alpha = 0.8) + 
+  scale_fill_suezalla(palette_name = "zombie") + 
+  theme_zombie() +
+  ggtitle("Theme Zombie") +
+  coord_capped_cart(bottom = 'both', left = 'both')
+```
 
 ---
 

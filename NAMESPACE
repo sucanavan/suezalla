@@ -2,6 +2,8 @@
 
 export(scale_colour_suezalla)
 export(scale_fill_suezalla)
+export(scale_fill_zombie)
 export(suezalla_fonts)
 export(suezalla_palette)
 export(theme_suezalla)
+export(theme_zombie)
