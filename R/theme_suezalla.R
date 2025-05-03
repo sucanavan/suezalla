@@ -34,7 +34,7 @@ theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
 #' @importFrom ggplot2 element_text element_line element_rect theme
 #' @importFrom cowplot theme_cowplot
 #' @importFrom lemon coord_capped_cart
-theme_zombie <- function(base_size = 12, base_family = "xkcd") {
+theme_zombie <- function(base_size = 14, base_family = "xkcd") {
   use_xkcd <- requireNamespace("xkcd", quietly = TRUE)
 
   base_theme <- if (use_xkcd) {

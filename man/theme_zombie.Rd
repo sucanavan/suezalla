@@ -4,7 +4,7 @@
 \alias{theme_zombie}
 \title{Suezalla Zombie Theme (XKCD-style)}
 \usage{
-theme_zombie(base_size = 12, base_family = "xkcd")
+theme_zombie(base_size = 14, base_family = "xkcd")
 }
 \arguments{
 \item{base_size}{Base font size}
