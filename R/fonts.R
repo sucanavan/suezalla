@@ -44,7 +44,7 @@ install_xkcd_font <- function() {
   # Determine system font folder
   sys_font_dir <- switch(Sys.info()[["sysname"]],
                          "Darwin"  = "~/Library/Fonts",
-                         "Windows" = Sys.getenv("WINDIR", "C:/Windows"),  # Usually already correct
+                         "Windows" = Sys.getenv("WINDIR", "C:/Windows/Fonts"),
                          "Linux"   = "~/.fonts",
                          stop("Unsupported OS"))
 
@@ -61,4 +61,30 @@ install_xkcd_font <- function() {
 
   message("✅ xkcd font installed to: ", full_path)
   message("You may need to restart R or your computer for the font to appear.")
+}
+
+
+#' Register xkcd font for suezalla zombie theme
+#'
+#' Enables rendering with the xkcd font for `theme_zombie()`.
+#' Assumes xkcd.ttf is already installed system-wide.
+#'
+#' @export
+suezalla_fonts_zombie <- function() {
+  if (!requireNamespace("sysfonts", quietly = TRUE) || !requireNamespace("showtext", quietly = TRUE)) {
+    warning("Install 'sysfonts' and 'showtext' packages to enable custom fonts.")
+    return(invisible(FALSE))
+  }
+
+  # Just register under the family name if it's already installed system-wide
+  sysfonts::font_add(family = "xkcd", regular = "xkcd.ttf")
+  showtext::showtext_auto()
+
+  if (!"xkcd" %in% sysfonts::font_families()) {
+    warning("The xkcd font could not be loaded. Make sure xkcd.ttf is in your system font directory.")
+    return(invisible(FALSE))
+  }
+
+  message("xkcd font loaded successfully.")
+  invisible(TRUE)
 }
