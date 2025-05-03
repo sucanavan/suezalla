@@ -5,7 +5,10 @@ output: github_document
 
 # suezalla: A custom ggplot2 theme and colour palette
 
-`suezalla` is a lightweight R package providing a custom `ggplot2` theme and a matching discrete colour palette. It simplifies creating consistent and aesthetically pleasing visualizations.
+`suezalla` is a lightweight R package that provides:
+- A custom `ggplot2` theme (`theme_suezalla()` and `suez_theme_vintage()`)
+- Multiple curated colour palettes
+- Scales for applying these palettes to plots (`scale_colour_suezalla()`, `scale_fill_suezalla()`)
 
 ---
 
