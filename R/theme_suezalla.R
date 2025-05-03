@@ -21,20 +21,30 @@ theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
 }
 
 
-#' Suezalla Zombie Theme
+#' Suezalla Zombie Theme (XKCD-style)
 #'
-#' A playful zombie-style ggplot2 theme for point plots. Requires the XKCD font installed and `suezalla_fonts_zombie()` called.
+#' A playful zombie-style ggplot2 theme for point plots. Uses `xkcd::theme_xkcd()` if available,
+#' otherwise defaults to `cowplot::theme_cowplot()`. Requires the XKCD font to be installed.
 #'
 #' @param base_size Base font size
 #' @param base_family Font family to use (default = "xkcd")
 #'
 #' @return A ggplot2 theme object
 #' @export
-#' @import cowplot
-#' @import lemon
+#' @importFrom ggplot2 element_text element_line element_rect theme
+#' @importFrom cowplot theme_cowplot
 #' @importFrom lemon coord_capped_cart
 theme_zombie <- function(base_size = 12, base_family = "xkcd") {
-  cowplot::theme_cowplot(font_family = base_family) +
+  use_xkcd <- requireNamespace("xkcd", quietly = TRUE)
+
+  base_theme <- if (use_xkcd) {
+    xkcd::theme_xkcd()
+  } else {
+    message("xkcd package not found. Falling back to cowplot::theme_cowplot().")
+    cowplot::theme_cowplot(font_family = base_family)
+  }
+
+  base_theme +
     ggplot2::theme(
       text = ggplot2::element_text(family = base_family),
       legend.position = "none",

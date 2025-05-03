@@ -23,29 +23,24 @@ suezalla_fonts <- function() {
 }
 
 
-#' Install and register XKCD font
+#' Install and register XKCD font (manual fallback)
 #'
-#' Downloads and installs the XKCD font and registers it for use in ggplot2 themes.
-#' This works across macOS, Windows, and Linux.
+#' Downloads the XKCD font and registers it for use with theme_zombie().
+#' Only needed if system install fails or you're on Windows/macOS.
 #'
 #' @export
-suezalla_fonts_zombie <- function() {
-  if (!requireNamespace("extrafont", quietly = TRUE)) stop("Please install the 'extrafont' package.")
-
-  # Download XKCD font to temp location
-  font_url <- "https://github.com/ipython/xkcd-font/raw/master/xkcd-script.ttf"
+install_xkcd_font <- function() {
+  font_url <- "https://suezalla-fonts.s3.eu-west-1.amazonaws.com/xkcd.ttf"
   font_file <- file.path(tempdir(), "xkcd.ttf")
-  download.file(font_url, destfile = font_file, mode = "wb")
 
-  # Import it using extrafont
-  extrafont::font_import(paths = dirname(font_file), pattern = "[Xx]kcd", prompt = FALSE)
-  extrafont::loadfonts(device = if (.Platform$OS.type == "windows") "win" else "pdf")
+  tryCatch({
+    download.file(font_url, destfile = font_file, mode = "wb")
+    sysfonts::font_add(family = "xkcd", regular = font_file)
+    showtext::showtext_auto()
+    message("✅ XKCD font downloaded and loaded from temp directory.")
+  }, error = function(e) {
+    warning("❌ Could not download XKCD font: ", e$message)
+  })
 
-  if (!"xkcd" %in% extrafont::fonts()) {
-    warning("XKCD font import failed. Try restarting R.")
-    return(invisible(FALSE))
-  }
-
-  message("✅ XKCD font installed and registered.")
   invisible(TRUE)
 }

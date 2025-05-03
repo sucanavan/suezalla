@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_suezalla.R
 \name{theme_zombie}
 \alias{theme_zombie}
-\title{Suezalla Zombie Theme}
+\title{Suezalla Zombie Theme (XKCD-style)}
 \usage{
 theme_zombie(base_size = 12, base_family = "xkcd")
 }
@@ -15,5 +15,6 @@ theme_zombie(base_size = 12, base_family = "xkcd")
 A ggplot2 theme object
 }
 \description{
-A playful zombie-style ggplot2 theme for point plots. Requires the XKCD font installed and \code{suezalla_fonts_zombie()} called.
+A playful zombie-style ggplot2 theme for point plots. Uses \code{xkcd::theme_xkcd()} if available,
+otherwise defaults to \code{cowplot::theme_cowplot()}. Requires the XKCD font to be installed.
 }
