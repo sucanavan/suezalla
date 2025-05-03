@@ -2,11 +2,11 @@
 % Please edit documentation in R/fonts.R
 \name{suezalla_fonts_zombie}
 \alias{suezalla_fonts_zombie}
-\title{Register xkcd font for suezalla zombie theme}
+\title{Install and register XKCD font}
 \usage{
 suezalla_fonts_zombie()
 }
 \description{
-Enables rendering with the xkcd font for \code{theme_zombie()}.
-Assumes xkcd.ttf is already installed system-wide.
+Downloads and installs the XKCD font and registers it for use in ggplot2 themes.
+This works across macOS, Windows, and Linux.
 }

@@ -54,6 +54,13 @@ suezalla_palette("jam", n = 4)
 # Return 10 interpolated colours from the 'autumn' palette
 suezalla_palette("autumn", n = 10, type = "continuous")
 ```
+---
+## Fonts
+
+The `suezalla` package automatically loads the Roboto and XKCD fonts (if available) using the `sysfonts` and `showtext` packages. No manual steps are needed.
+
+- Roboto is loaded from Google Fonts.
+- XKCD is loaded if you have installed `xkcd.ttf` in your system fonts folder or working directory.
 
 ---
 
