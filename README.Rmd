@@ -83,7 +83,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
 # Requires xkcd font to be installed on your system
 library(suezalla)
 library(ggplot2)
-library(lemon)
+
 
 ggplot(mtcars, aes(y = wt, x = mpg)) + 
   geom_point(aes(fill = cyl, size = cyl), shape = 21, alpha = 0.8) + 

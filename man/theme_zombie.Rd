@@ -9,11 +9,11 @@ theme_zombie(base_size = 12, base_family = "xkcd")
 \arguments{
 \item{base_size}{Base font size}
 
-\item{base_family}{Font family to use (default is "xkcd")}
+\item{base_family}{Font family to use (default = "xkcd")}
 }
 \value{
 A ggplot2 theme object
 }
 \description{
-A playful zombie-style ggplot2 theme for point plots. Requires the XKCD font installed.
+A playful zombie-style ggplot2 theme for point plots. Requires the XKCD font installed and \code{suezalla_fonts_zombie()} called.
 }

@@ -2,20 +2,18 @@
 % Please edit documentation in R/theme_suezalla.R
 \name{theme_suezalla}
 \alias{theme_suezalla}
-\title{A clean, minimalistic ggplot2 theme designed to work well with Roboto font.
-Note: Use \code{suezalla_fonts()} before plotting to load and activate the Roboto font.}
+\title{Suezalla Theme}
 \usage{
 theme_suezalla(base_size = 12, base_family = "Roboto")
 }
 \arguments{
 \item{base_size}{Base font size}
 
-\item{base_family}{Font family, default is "Roboto"}
+\item{base_family}{Font family (default = "Roboto")}
 }
 \value{
-A ggplot2 theme object
+A ggplot2 theme
 }
 \description{
-A clean, minimalistic ggplot2 theme designed to work well with Roboto font.
-Note: Use \code{suezalla_fonts()} before plotting to load and activate the Roboto font.
+A clean, minimalistic ggplot2 theme. Works best with Roboto (see \code{suezalla_fonts()}).
 }
