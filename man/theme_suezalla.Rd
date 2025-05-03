@@ -6,6 +6,15 @@
 \usage{
 theme_suezalla(base_size = 12, base_family = "Roboto")
 }
+\arguments{
+\item{base_size}{Base font size}
+
+\item{base_family}{Font family, default is "Roboto"}
+}
+\value{
+A ggplot2 theme object
+}
 \description{
-A clean, minimalistic ggplot2 theme.
+A clean, minimalistic ggplot2 theme designed to work well with Roboto font.
+Note: Use \code{suezalla_fonts()} before plotting to load and activate the Roboto font.
 }

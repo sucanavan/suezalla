@@ -2,6 +2,6 @@
 
 export(scale_colour_suezalla)
 export(scale_fill_suezalla)
-export(suezalla_cols)
+export(suezalla_fonts)
 export(suezalla_palette)
 export(theme_suezalla)
