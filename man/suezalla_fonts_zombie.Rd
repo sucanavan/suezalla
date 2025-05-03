@@ -7,5 +7,5 @@
 suezalla_fonts_zombie()
 }
 \description{
-Downloads and installs the XKCD font from GitHub (if available) and registers it for use with ggplot2.
+Downloads and installs the XKCD font and registers it for use with ggplot2.
 }

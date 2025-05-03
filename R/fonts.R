@@ -25,7 +25,7 @@ suezalla_fonts <- function() {
 
 #' Optional helper to manually register the XKCD font
 #'
-#' Downloads and installs the XKCD font from GitHub (if available) and registers it for use with ggplot2.
+#' Downloads and installs the XKCD font and registers it for use with ggplot2.
 #'
 #' @export
 suezalla_fonts_zombie <- function() {
@@ -34,18 +34,17 @@ suezalla_fonts_zombie <- function() {
     return(invisible(FALSE))
   }
 
-  font_url <- "https://github.com/ipython/xkcd-font/raw/master/xkcd-script.ttf"
+  font_url <- "http://simonsoftware.se/other/xkcd.ttf"
   font_file <- file.path(tempdir(), "xkcd.ttf")
 
-  # Try download
   tryCatch({
     utils::download.file(font_url, destfile = font_file, mode = "wb")
     sysfonts::font_add(family = "xkcd", regular = font_file)
     showtext::showtext_auto()
     message("✅ XKCD font loaded for zombie theme.")
-    return(invisible(TRUE))
+    invisible(TRUE)
   }, error = function(e) {
     warning("⚠ Failed to download or register XKCD font: ", e$message)
-    return(invisible(FALSE))
+    invisible(FALSE)
   })
 }
