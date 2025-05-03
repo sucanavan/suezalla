@@ -6,6 +6,11 @@
 \usage{
 theme_zombie(base_size = 12, base_family = "xkcd")
 }
+\arguments{
+\item{base_size}{Base font size}
+
+\item{base_family}{Font family to use (default is "xkcd")}
+}
 \value{
 A ggplot2 theme object
 }

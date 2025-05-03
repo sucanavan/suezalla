@@ -11,7 +11,7 @@ suezalla_palette(
 )
 }
 \arguments{
-\item{name}{Name of the color scheme (e.g., "polaroid", "vibrant", "zombie", etc.)}
+\item{name}{Name of the color scheme (e.g., "polaroid", "vibrant", etc.)}
 
 \item{n}{Number of colors to return}
 

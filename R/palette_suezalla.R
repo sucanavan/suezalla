@@ -2,7 +2,7 @@
 #'
 #' Generates a palette of any number of colors from a named preset scheme
 #'
-#' @param name Name of the color scheme (e.g., "polaroid", "vibrant", "zombie", etc.)
+#' @param name Name of the color scheme (e.g., "polaroid", "vibrant", etc.)
 #' @param n Number of colors to return
 #' @param type Type of palette: "discrete" or "continuous"
 #'

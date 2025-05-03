@@ -45,10 +45,15 @@ theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
 #'
 #' A playful zombie-style ggplot2 theme for point plots. Requires the XKCD font installed.
 #'
+#' @param base_size Base font size
+#' @param base_family Font family to use (default is "xkcd")
+#'
 #' @return A ggplot2 theme object
 #' @export
+#' @import cowplot
+#' @import lemon
 theme_zombie <- function(base_size = 12, base_family = "xkcd") {
-  ggplot2::theme_cowplot(font_family = base_family) +
+  cowplot::theme_cowplot(font_family = base_family) +
     ggplot2::theme(
       text = ggplot2::element_text(family = base_family),
       legend.position = "none",
@@ -56,9 +61,7 @@ theme_zombie <- function(base_size = 12, base_family = "xkcd") {
       axis.title = ggplot2::element_text(color = "black", size = 12),
       axis.text = ggplot2::element_text(size = 9, color = "black"),
       panel.grid.major.x = ggplot2::element_line(color = "darkgrey", linetype = 3, size = 0.2),
-      plot.title = ggplot2::element_text(color = "black", hjust = 0.5, family = base_family, face = "bold", size = 13),
+      plot.title = ggplot2::element_text(color = "black", hjust = 0.5, face = "bold", size = 13),
       plot.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA)
     )
 }
-
-

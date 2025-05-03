@@ -1,13 +1,19 @@
 Package: suezalla
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Custom ggplot2 Themes and Colour Palettes for Stylized Plots
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Susan", "Canavan", email = "your.email@example.com", role = c("aut", "cre"))
+Description: 
+    The suezalla package provides lightweight, expressive tools for visual storytelling 
+    with ggplot2. It includes several curated colour palettes and themes, including 
+    minimal designs, vintage styles, and a playful zombie theme. Use it to create 
+    clean or stylized plots with ease, consistent branding, and beautiful defaults.
+License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
-    ggplot2
+    ggplot2,
+    cowplot,
+    lemon,
+    grDevices
