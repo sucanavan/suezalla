@@ -4,10 +4,12 @@
 \alias{theme_latex}
 \title{Theme: LaTeX-Style Academic Plot}
 \usage{
-theme_latex(gridlines = TRUE)
+theme_latex(gridlines = TRUE, axes = "all")
 }
 \arguments{
 \item{gridlines}{Logical. If TRUE (default), show light dashed major gridlines.}
+
+\item{axes}{Character. One of "all" (default), "x", "y", or "none" — controls which axis lines are shown.}
 }
 \value{
 A ggplot2 theme object

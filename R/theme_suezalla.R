@@ -102,25 +102,33 @@ theme_academic1940 <- function() {
 #' Features clean black-and-white styling, optional dashed gridlines, and serif text (Abhaya Libre).
 #'
 #' @param gridlines Logical. If TRUE (default), show light dashed major gridlines.
+#' @param axes Character. One of "all" (default), "x", "y", or "none" — controls which axis lines are shown.
 #'
 #' @return A ggplot2 theme object
 #' @export
 #' @importFrom ggplot2 theme element_text element_blank element_line element_rect
-theme_latex <- function(gridlines = TRUE) {
+theme_latex <- function(gridlines = TRUE, axes = "all") {
   grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
+
+  # Axis lines logic
+  axis_line_x <- if (axes %in% c("x", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+  axis_line_y <- if (axes %in% c("y", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+  panel_border <- if (axes == "all") ggplot2::element_rect(color = "black", size = 0.3, fill = NA) else ggplot2::element_blank()
 
   ggplot2::theme(
     axis.text = ggplot2::element_text(size = 9, color = "black"),
     panel.grid.major = grid_line,
     panel.grid.minor = ggplot2::element_blank(),
     axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
+    axis.line.x = axis_line_x,
+    axis.line.y = axis_line_y,
+    panel.border = panel_border,
     text = ggplot2::element_text(family = "abhaya"),
     legend.position = "right",
     legend.text = ggplot2::element_text(size = 8),
     legend.title = ggplot2::element_text(size = 9, face = "bold"),
     panel.background = ggplot2::element_rect(fill = "white", color = NA),
     plot.background = ggplot2::element_rect(fill = "white", color = NA),
-    panel.border = ggplot2::element_rect(color = "black", size = 0.3, fill = NA),
     legend.key = ggplot2::element_blank()
   )
 }
