@@ -79,7 +79,6 @@ theme_academic1940 <- function() {
   list(
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
-      plot.title = ggplot2::element_blank(),
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
