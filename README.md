@@ -114,12 +114,14 @@ ggplot(mtcars, aes(y = wt, x = mpg)) +
 
 ### Academic 1940 theme example
 
-\`\`\`r
+``` r
+library(suezalla)
+library(ggplot2)
 
-library(suezalla) library(ggplot2)
-
-ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point(shape = 1, size = 2,
-stroke = 0.4) + theme_academic1940()
+ggplot(mtcars, aes(x = mpg, y = wt)) +
+  geom_point(shape = 1, size = 2, stroke = 0.4) +
+  theme_academic1940()
+```
 
 ------------------------------------------------------------------------
 
