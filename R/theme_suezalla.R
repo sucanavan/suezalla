@@ -56,3 +56,32 @@ theme_zombie <- function(base_size = 14, base_family = "xkcd") {
       plot.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA)
     )
 }
+
+
+
+#' Theme: Academic 1940
+#'
+#' A vintage-style ggplot2 theme inspired by classic black-and-white academic plots.
+#' Requires "Abhaya Libre" font (auto-loaded from Google Fonts).
+#'
+#' @return A ggplot2 theme object
+#' @export
+#' @importFrom ggplot2 theme element_text element_blank element_line element_rect
+#' @importFrom lemon coord_capped_cart
+theme_academic1940 <- function() {
+  list(
+    ggplot2::theme(
+      axis.text = ggplot2::element_text(size = 9, color = "black"),
+      plot.title = ggplot2::element_blank(),
+      legend.position = "none",
+      panel.grid.major = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
+      axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
+      axis.line = ggplot2::element_line(color = "black", size = 0.3),
+      text = ggplot2::element_text(family = "abhaya"),
+      panel.background = ggplot2::element_rect(fill = "white", color = NA),
+      plot.background = ggplot2::element_rect(fill = "white", color = NA)
+    ),
+    lemon::coord_capped_cart(bottom = 'both', left = 'both')
+  )
+}

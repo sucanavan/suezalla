@@ -1,7 +1,7 @@
-#' Register Roboto font for suezalla theme
+#' Register fonts for suezalla themes
 #'
-#' Downloads and registers Roboto from Google Fonts using sysfonts.
-#' You must call this before using `theme_suezalla()` if you want custom font rendering.
+#' Downloads and registers Roboto and Abhaya Libre from Google Fonts using sysfonts.
+#' You must call this before plotting if you want custom font rendering in suezalla themes.
 #'
 #' @export
 suezalla_fonts <- function() {
@@ -10,18 +10,22 @@ suezalla_fonts <- function() {
     return(invisible(FALSE))
   }
 
+  # Register fonts
   sysfonts::font_add_google("Roboto", "Roboto")
+  sysfonts::font_add_google("Abhaya Libre", "abhaya")
+
+  # Enable font rendering
   showtext::showtext_auto()
 
-  if (!"Roboto" %in% sysfonts::font_families()) {
-    warning("Roboto font could not be loaded.")
+  loaded_fonts <- sysfonts::font_families()
+  if (!("Roboto" %in% loaded_fonts && "abhaya" %in% loaded_fonts)) {
+    warning("⚠ Roboto or Abhaya Libre font could not be loaded.")
     return(invisible(FALSE))
   }
 
-  message("Roboto font loaded successfully.")
+  message("✅ Fonts loaded: Roboto and Abhaya Libre")
   invisible(TRUE)
 }
-
 
 #' Optional helper to manually register the XKCD font
 #'

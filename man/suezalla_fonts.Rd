@@ -2,11 +2,11 @@
 % Please edit documentation in R/fonts.R
 \name{suezalla_fonts}
 \alias{suezalla_fonts}
-\title{Register Roboto font for suezalla theme}
+\title{Register fonts for suezalla themes}
 \usage{
 suezalla_fonts()
 }
 \description{
-Downloads and registers Roboto from Google Fonts using sysfonts.
-You must call this before using \code{theme_suezalla()} if you want custom font rendering.
+Downloads and registers Roboto and Abhaya Libre from Google Fonts using sysfonts.
+You must call this before plotting if you want custom font rendering in suezalla themes.
 }
