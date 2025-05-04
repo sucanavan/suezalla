@@ -11,6 +11,6 @@ A ggplot2 theme object
 }
 \description{
 A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-Features clean black-and-white styling, capped axes, and serif text (Abhaya Libre).
+Features clean black-and-white styling, full box axes, and serif text (Abhaya Libre).
 Designed for publication-quality graphics with minimal clutter.
 }
