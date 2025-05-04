@@ -12,7 +12,7 @@
 #'
 #' @return A list of ggplot2 layers
 #' @export
-#' @importFrom ggplot2 theme element_text element_blank element_line element_rect scale_fill_manual
+#' @importFrom ggplot2 theme element_text element_blank element_line element_rect scale_fill_manual aes
 #' @importFrom lemon coord_capped_cart
 #' @importFrom ggpattern geom_bar_pattern scale_pattern_manual
 theme_academic1940_pattern <- function(n = 6,
@@ -24,23 +24,15 @@ theme_academic1940_pattern <- function(n = 6,
   bw_palette <- suezalla_palette("academic", n = n)
   pattern_values <- suezalla_patterns(n)
 
+  # Base layer
   bar_layer <- ggpattern::geom_bar_pattern(
     stat = "identity",
-    pattern = "stripe",
     pattern_spacing = pattern_spacing,
     pattern_key_scale_factor = pattern_key_scale_factor,
     fill = "white",
     colour = colour,
     show.legend = show.legend
   )
-
-  # Add pattern_density only if it's not NULL
-  if (!is.null(pattern_density)) {
-    bar_layer$mapping <- modifyList(
-      bar_layer$mapping,
-      aes(pattern_density = pattern_density)
-    )
-  }
 
   list(
     ggplot2::scale_fill_manual(values = bw_palette),
