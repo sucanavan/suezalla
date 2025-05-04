@@ -2,20 +2,76 @@
 % Please edit documentation in R/theme_academic_style.R
 \name{theme_academic1940_pattern}
 \alias{theme_academic1940_pattern}
-\title{Theme: Academic 1940 with Pattern Bars}
+\title{Theme: Academic 1940 with Patterns}
 \usage{
-theme_academic1940_pattern(n = 6)
+theme_academic1940_pattern(
+  n = 6,
+  pattern_density = 0.4,
+  pattern_spacing = 0.02,
+  colour = "black",
+  show.legend = TRUE,
+  notch = FALSE,
+  notchwidth = 0.5,
+  staplewidth = 1,
+  varwidth = FALSE,
+  fatten = 2,
+  outline.type = "both",
+  binwidth = NULL,
+  bins = 30,
+  rule = "evenodd",
+  map = NULL,
+  draw_quantiles = NULL,
+  trim = TRUE,
+  bounds = c(-Inf, Inf),
+  scale = "area"
+)
 }
 \arguments{
-\item{n}{Number of discrete groups to assign patterns and fills}
+\item{n}{Number of groups (used for assigning fill and pattern)}
+
+\item{pattern_density}{Density of pattern (default = 0.4)}
+
+\item{pattern_spacing}{Spacing between pattern elements (default = 0.02)}
+
+\item{colour}{Outline colour of the bars (default = "black")}
+
+\item{show.legend}{Whether to show legend (default = TRUE)}
+
+\item{notch}{Whether to use notched box plot (default = FALSE)}
+
+\item{notchwidth}{Width of the notch relative to the body (default = 0.5)}
+
+\item{staplewidth}{Width of staples (default = 1)}
+
+\item{varwidth}{Whether box width is proportional to sqrt(n) (default = FALSE)}
+
+\item{fatten}{Multiplicative factor for middle point size (default = 2)}
+
+\item{outline.type}{Outline type for geom (default = "both")}
+
+\item{binwidth}{Bin width for histograms (default = NULL)}
+
+\item{bins}{Number of bins (default = 30)}
+
+\item{rule}{Polygon fill rule (default = "evenodd")}
+
+\item{map}{Data frame for map geom (default = NULL)}
+
+\item{draw_quantiles}{Quantiles to draw for violin plots (default = NULL)}
+
+\item{trim}{Trim tails in violin plots (default = TRUE)}
+
+\item{bounds}{Bounds for density estimation (default = c(-Inf, Inf))}
+
+\item{scale}{Scale for violin width (default = "area")}
 }
 \value{
-A list of ggplot2 layers (theme, scales, geom)
+A ggplot2 theme object with ggpattern integration
 }
 \description{
-A vintage-style ggplot2 theme for academic-style bar plots.
-Applies black-and-white fill colors, pattern styles via ggpattern, and vintage typography.
-Uses the "Abhaya Libre" font (auto-loaded).
+A vintage-style ggplot2 theme inspired by black-and-white academic plots.
+Designed to work with ggpattern fills and the "academic" palette.
+Uses the "Abhaya Libre" font if available.
 }
 \examples{
 df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
