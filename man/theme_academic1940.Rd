@@ -2,16 +2,16 @@
 % Please edit documentation in R/theme_suezalla.R
 \name{theme_academic1940}
 \alias{theme_academic1940}
-\title{Theme: Academic 1940}
+\title{Academic 1940 Theme}
 \usage{
-theme_academic1940(base_family = "abhaya")
+theme_academic1940(font = c("abhaya", "CMU Serif", "latinmodern", "Roboto"))
 }
 \arguments{
-\item{base_family}{Font to use (default = "abhaya")}
+\item{font}{Font family (default = "abhaya")}
 }
 \value{
-A list: theme and coordinate system
+A list: theme and coord system
 }
 \description{
-A vintage-style theme inspired by black-and-white academic plots.
+A vintage-style theme inspired by mid-century academic plots.
 }

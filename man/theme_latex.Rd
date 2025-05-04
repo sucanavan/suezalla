@@ -2,25 +2,24 @@
 % Please edit documentation in R/theme_suezalla.R
 \name{theme_latex}
 \alias{theme_latex}
-\title{Theme: LaTeX-Style Academic Plot}
+\title{LaTeX-Style Academic Plot Theme}
 \usage{
 theme_latex(
   gridlines = TRUE,
   axes = "all",
-  font = c("abhaya", "CMU Serif", "Latin Modern Roman")
+  font = c("abhaya", "CMU Serif", "latinmodern", "Roboto")
 )
 }
 \arguments{
-\item{gridlines}{Logical. If TRUE (default), show light dashed major gridlines.}
+\item{gridlines}{Logical. If TRUE (default), show light dashed gridlines.}
 
-\item{axes}{Character. One of "all", "both", "x", "y", or "none" — controls axis line visibility.}
+\item{axes}{Character. One of "all", "both", "x", "y", or "none".}
 
-\item{font}{Character. Choose a font: "abhaya" (default), "CMU Serif", or "Latin Modern Roman".}
+\item{font}{Font family: "abhaya", "CMU Serif", "latinmodern", "Roboto"}
 }
 \value{
-A ggplot2 theme object
+A ggplot2 theme
 }
 \description{
-A vintage-style ggplot2 theme with clean black-and-white styling, optional dashed gridlines,
-and selectable fonts for LaTeX-like output. Supports full box axis or selective axis lines.
+Clean black-and-white style with optional gridlines and font control.
 }

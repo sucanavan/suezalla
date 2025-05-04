@@ -4,16 +4,20 @@
 \alias{theme_magazine}
 \title{Magazine Theme}
 \usage{
-theme_magazine(base_size = 12, base_family = "Roboto")
+theme_magazine(
+  base_size = 12,
+  font = c("Roboto", "abhaya", "latinmodern", "CMU Serif")
+)
 }
 \arguments{
 \item{base_size}{Base font size}
 
-\item{base_family}{Font family (default = "Roboto")}
+\item{font}{Character. Font family to use (default = "Roboto").}
 }
 \value{
 A ggplot2 theme
 }
 \description{
-A clean, minimalistic theme inspired by editorial layouts. All text in black, no background grids.
+A clean, minimalistic theme inspired by editorial layouts.
+All text in black, no background grids.
 }
