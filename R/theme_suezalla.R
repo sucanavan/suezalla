@@ -130,7 +130,7 @@ theme_zombie <- function(base_size = 14,
         panel.grid.major.x = ggplot2::element_line(color = "darkgrey", linetype = 3, size = 0.2),
         plot.title = ggplot2::element_text(color = "black", hjust = 0.5, face = "bold", size = 13),
         plot.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA),
-        legend.background = ggplot2::element_blank(),
+        legend.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA),
         legend.key = ggplot2::element_blank()
       ),
     lemon::coord_capped_cart(bottom = "both", left = "both")
