@@ -2,22 +2,21 @@
 % Please edit documentation in R/theme_academic_style.R
 \name{suezalla_academic_style}
 \alias{suezalla_academic_style}
-\title{Complete Academic 1940 Style for ggplot2}
+\title{Complete Academic 1940 Style}
 \usage{
 suezalla_academic_style(n = 6)
 }
 \arguments{
-\item{n}{Number of discrete groups (for assigning colors/patterns)}
+\item{n}{Number of categories to style}
 }
 \value{
-A list of ggplot2 layers: fill scale, pattern scale, and theme
+A list of ggplot2 components
 }
 \description{
-Combines a black-and-white color palette, pattern fills, and a classic theme for vintage academic-style plots.
-Intended for use with \code{ggpattern} geoms (e.g., \code{geom_col_pattern()}).
+Returns a list of ggplot2 layers combining a black-and-white palette, ggpattern fill styles, and the academic theme.
 }
 \examples{
-ggplot(data, aes(x, y, fill = group, pattern = group)) +
+ggplot(df, aes(x, y, fill = group, pattern = group)) +
   geom_col_pattern() +
-  suezalla_academic_style(n = 5)
+  suezalla_academic_style(n = 4)
 }
