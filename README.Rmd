@@ -1,10 +1,20 @@
 ---
 title: "suezalla"
-output: 
+output:
   html_document:
     toc: true
     toc_float: true
+  pdf_document:
+    toc: true
 ---
+
+```{r setup, include=FALSE}
+library(suezalla)
+library(ggplot2)
+library(showtext)
+library(sysfonts)
+suezalla_fonts()
+```
 
 # suezalla: A custom ggplot2 theme and colour palette
 
@@ -50,11 +60,8 @@ Use with `suezalla_palette()`, `scale_colour_suezalla()`, or `scale_fill_suezall
 | `zombie`    | Gritty, earthy tones ideal for bold plots            | `grey70`, `#F56438`, `#59AC99` |
 | `academic`  | Greyscale palette for old-style scientific plots     | `black`, `grey10`, `grey40`, `grey70`, `white` |
 
-```r
-# Return 4 discrete colours
+```{r palette-demo, echo=TRUE, message=FALSE, warning=FALSE}
 suezalla_palette("jam", n = 4)
-
-# Return 10 interpolated colours from the 'autumn' palette
 suezalla_palette("autumn", n = 10, type = "continuous")
 ```
 
@@ -66,7 +73,7 @@ The `suezalla` package auto-loads:
 
 - **Roboto** from Google Fonts for `theme_suezalla()`
 - **XKCD** (if available locally) for `theme_zombie()`
-- **Abhaya Libre** for academic themes (`theme_academic1940()`)
+- **Abhaya Libre**, **Latin Modern Roman**, and **CMU Serif** for academic themes
 
 These are handled automatically via `sysfonts` and `showtext` when the package is attached.
 
@@ -74,12 +81,48 @@ These are handled automatically via `sysfonts` and `showtext` when the package i
 
 ## Quick examples
 
-### Magazine 
+### LaTeX academic plot
 
-```r
-library(suezalla)
-library(ggplot2)
+```{r latex-theme, echo=TRUE, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
+  geom_point(size = 2, stroke = 0.4) +
+  theme_latex() +
+  labs(
+    title = "Car efficiency by weight",
+    x = "Miles per Gallon",
+    y = "Weight",
+    shape = "Carburetors"
+  )
+```
 
+### Academic 1940
+
+```{r academic1940, echo=TRUE, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
+  geom_point(size = 2, stroke = 0.4, color = "black", fill = "white") +
+  scale_shape_manual(values = c(0, 1, 2, 3, 4, 5)) +
+  theme_academic1940() +
+  labs(
+    title = "Car efficiency by weight",
+    x = "Miles per Gallon",
+    y = "Weight (1000 lbs)",
+    shape = "Carburetors"
+  )
+```
+
+### Academic pattern style
+
+```{r academic-pattern, echo=TRUE, message=FALSE, warning=FALSE}
+df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
+df$cyl <- factor(df$cyl)
+
+ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
+  theme_academic1940_pattern(n = 3)
+```
+
+### Magazine theme
+
+```{r magazine, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   geom_point(size = 3) +
   scale_colour_suezalla(palette_name = "jam") +
@@ -92,62 +135,9 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   )
 ```
 
-### LaTeX academic plot (clean black & white with serif font)
+### Zombie theme
 
-```r
-library(suezalla)
-library(ggplot2)
-
-ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
-  geom_point(size = 2, stroke = 0.4) +
-  theme_latex() +
-  labs(
-    title = "Car efficiency by weight",
-    x = "Miles per Gallon",
-    y = "Weight",
-    shape = "Carburetors"
-  )
-  
-```
-
-### Academic 1940 
-
-```r
-library(suezalla)
-library(ggplot2)
-
-ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
-  geom_point(size = 2, stroke = 0.4, color = "black", fill = "white") +
-  scale_shape_manual(values = c(0, 1, 2, 3, 4, 5)) +  # adjust if more shapes are needed
-  theme_academic1940() +
-  labs(
-    title = "Car efficiency by weight",
-    x = "Miles per Gallon",
-    y = "Weight (1000 lbs)",
-    shape = "Carburetors"
-  )
-```
-
-### Academic pattern style (with `ggpattern`)
-
-```r
-library(suezalla)
-library(ggplot2)
-
-# Prepare summarized data
-df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
-df$cyl <- factor(df$cyl)
-
-# Apply theme with automatic fill and pattern
-ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
-  theme_academic1940_pattern(n = 3)
-```
-### Zombie 
-
-```r
-library(suezalla)
-library(ggplot2)
-
+```{r zombie, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(y = wt, x = mpg)) + 
   geom_point(aes(fill = factor(cyl), size = cyl), shape = 21, alpha = 0.8) + 
   scale_fill_suezalla(palette_name = "zombie") + 
@@ -159,6 +149,7 @@ ggplot(mtcars, aes(y = wt, x = mpg)) +
     colour = "Cylinders"
   )
 ```
+
 ---
 
 ## License

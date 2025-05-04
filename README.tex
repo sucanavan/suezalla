@@ -1,0 +1,364 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={suezalla},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{suezalla}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{suezalla: A custom ggplot2 theme and colour
+palette}\label{suezalla-a-custom-ggplot2-theme-and-colour-palette}
+
+\texttt{suezalla} is a lightweight R package that provides:
+
+\begin{itemize}
+\tightlist
+\item
+  Custom \texttt{ggplot2} themes:
+  \texttt{theme\_magazine()},\texttt{theme\_latex()},
+  \texttt{theme\_zombie()}, \texttt{theme\_academic1940()}, and
+  \texttt{theme\_academic1940\_pattern()}
+\item
+  Several curated colour palettes inspired by polaroids, jam jars, retro
+  aesthetics, zombies, and classic scientific graphics
+\item
+  Pattern fill utilities for \texttt{ggpattern}, including
+  \texttt{suezalla\_academic\_style()}
+\item
+  Custom scale functions: \texttt{scale\_colour\_suezalla()} and
+  \texttt{scale\_fill\_suezalla()}
+\end{itemize}
+
+These tools help you create clean, consistent, or stylistically bold
+visualizations with minimal effort.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Installation}\label{installation}
+
+Install the development version of \texttt{suezalla} from GitHub using
+\texttt{devtools}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# If not already installed}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+
+\CommentTok{\# Install suezalla}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"sucanavan/suezalla"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Available palettes}\label{available-palettes}
+
+Use with \texttt{suezalla\_palette()},
+\texttt{scale\_colour\_suezalla()}, or \texttt{scale\_fill\_suezalla()}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1182}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4909}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3909}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Palette
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hex codes (discrete)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{polaroid} & Soft pastel colours inspired by vintage photography
+& \texttt{\#45AAB4}, \texttt{\#038DB2}, \texttt{\#206491},
+\texttt{\#F9637C}, \texttt{\#FE7A66}, \texttt{\#FBB45C} \\
+\texttt{vibrant} & Bright, high-contrast colours & \texttt{\#FFC567},
+\texttt{\#FD5A46}, \texttt{\#00995E}, \texttt{\#FB7DA8},
+\texttt{\#552CB7}, \texttt{\#058CD7} \\
+\texttt{jam} & Rich, warm colours reminiscent of jam &
+\texttt{\#FBC9BE}, \texttt{\#DB7B65}, \texttt{\#ECB865},
+\texttt{\#695356}, \texttt{\#255F63} \\
+\texttt{corporate} & Clean, professional business tones &
+\texttt{\#23C2A2}, \texttt{\#EC3431}, \texttt{\#FBDE21},
+\texttt{\#138ABD}, \texttt{\#9BBAFA} \\
+\texttt{lively1} & Energetic, colorful combinations & \texttt{\#ED5565},
+\texttt{\#FFCE54}, \texttt{\#48CFAD}, \texttt{\#5D9CEC},
+\texttt{\#FC6E51}, \texttt{\#A0D468}, \texttt{\#4FC1E9},
+\texttt{\#AC92EC} \\
+\texttt{lively2} & Another bold and dynamic palette & \texttt{\#DA4453},
+\texttt{\#F6BB42}, \texttt{\#37BC98}, \texttt{\#4A89DC},
+\texttt{\#E9573F}, \texttt{\#8CC152}, \texttt{\#3BAFDA},
+\texttt{\#967ADC} \\
+\texttt{retro} & Nostalgic, mid-century colours & \texttt{\#E7363C},
+\texttt{\#F56438}, \texttt{\#FCAB20}, \texttt{\#59AC99},
+\texttt{\#3E446E} \\
+\texttt{autumn} & Warm seasonal tones & \texttt{\#388388},
+\texttt{\#4ABFBD}, \texttt{\#8AB17D}, \texttt{\#E9C46A},
+\texttt{\#F4A261}, \texttt{\#E76F51} \\
+\texttt{zombie} & Gritty, earthy tones ideal for bold plots &
+\texttt{grey70}, \texttt{\#F56438}, \texttt{\#59AC99} \\
+\texttt{academic} & Greyscale palette for old-style scientific plots &
+\texttt{black}, \texttt{grey10}, \texttt{grey40}, \texttt{grey70},
+\texttt{white} \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Return 4 discrete colours}
+\FunctionTok{suezalla\_palette}\NormalTok{(}\StringTok{"jam"}\NormalTok{, }\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
+
+\CommentTok{\# Return 10 interpolated colours from the \textquotesingle{}autumn\textquotesingle{} palette}
+\FunctionTok{suezalla\_palette}\NormalTok{(}\StringTok{"autumn"}\NormalTok{, }\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{type =} \StringTok{"continuous"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Fonts}\label{fonts}
+
+The \texttt{suezalla} package auto-loads:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Roboto} from Google Fonts for \texttt{theme\_suezalla()}
+\item
+  \textbf{XKCD} (if available locally) for \texttt{theme\_zombie()}
+\item
+  \textbf{Abhaya Libre}, \textbf{Latin Modern Roman}, and \textbf{CMU
+  Serif} for academic themes
+\end{itemize}
+
+These are handled automatically via \texttt{sysfonts} and
+\texttt{showtext} when the package is attached.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Quick examples}\label{quick-examples}
+
+\subsubsection{LaTeX academic plot (clean black \& white with serif
+font)}\label{latex-academic-plot-clean-black-white-with-serif-font}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(suezalla)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ mpg, }\AttributeTok{y =}\NormalTok{ wt, }\AttributeTok{shape =} \FunctionTok{factor}\NormalTok{(carb))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{, }\AttributeTok{stroke =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_latex}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Car efficiency by weight"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Miles per Gallon"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Weight"}\NormalTok{,}
+    \AttributeTok{shape =} \StringTok{"Carburetors"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Academic 1940}\label{academic-1940}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(suezalla)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ mpg, }\AttributeTok{y =}\NormalTok{ wt, }\AttributeTok{shape =} \FunctionTok{factor}\NormalTok{(carb))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{, }\AttributeTok{stroke =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_shape\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_academic1940}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Car efficiency by weight"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Miles per Gallon"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Weight (1000 lbs)"}\NormalTok{,}
+    \AttributeTok{shape =} \StringTok{"Carburetors"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{Academic pattern style (with
+\texttt{ggpattern})}{Academic pattern style (with ggpattern)}}\label{academic-pattern-style-with-ggpattern}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(suezalla)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(wt }\SpecialCharTok{\textasciitilde{}}\NormalTok{ cyl, }\AttributeTok{data =}\NormalTok{ mtcars, }\AttributeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{cyl }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl)}
+
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cyl, }\AttributeTok{y =}\NormalTok{ wt, }\AttributeTok{fill =}\NormalTok{ cyl, }\AttributeTok{pattern =}\NormalTok{ cyl)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_academic1940\_pattern}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Magazine}\label{magazine}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(suezalla)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg, }\AttributeTok{colour =} \FunctionTok{factor}\NormalTok{(cyl))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_suezalla}\NormalTok{(}\AttributeTok{palette\_name =} \StringTok{"jam"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_magazine}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Car efficiency by weight"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Weight"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{,}
+    \AttributeTok{colour =} \StringTok{"Cylinders"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Zombie}\label{zombie}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(suezalla)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ wt, }\AttributeTok{x =}\NormalTok{ mpg)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(cyl), }\AttributeTok{size =}\NormalTok{ cyl), }\AttributeTok{shape =} \DecValTok{21}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_suezalla}\NormalTok{(}\AttributeTok{palette\_name =} \StringTok{"zombie"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_zombie}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Car efficiency by weight"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Weight"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{,}
+    \AttributeTok{colour =} \StringTok{"Cylinders"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{License}\label{license}
+
+MIT © Susan Canavan, 2025
+
+\end{document}
