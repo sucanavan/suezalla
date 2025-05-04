@@ -99,26 +99,17 @@ theme_academic1940 <- function() {
 #' Theme: LaTeX-Style Academic Plot
 #'
 #' A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-#' Features clean black-and-white styling, dashed gridlines, and serif text (Abhaya Libre).
+#' Features clean black-and-white styling, optional dashed gridlines, and serif text (Abhaya Libre).
 #'
 #' @param gridlines Logical. If TRUE (default), show light dashed major gridlines.
-#' @param axes Character. Which axes to show: "all" (default), "x", "y", or "none".
 #'
 #' @return A ggplot2 theme object
 #' @export
 #' @importFrom ggplot2 theme element_text element_blank element_line element_rect
-theme_latex <- function(gridlines = TRUE, axes = "all") {
+theme_latex <- function(gridlines = TRUE) {
   grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
 
-  axis_line <- switch(axes,
-                      "all"  = ggplot2::element_line(color = "black", size = 0.3),
-                      "x"    = ggplot2::element_blank(),
-                      "y"    = ggplot2::element_blank(),
-                      "none" = ggplot2::element_blank(),
-                      ggplot2::element_line(color = "black", size = 0.3) # default fallback
-  )
-
-  theme_obj <- ggplot2::theme(
+  ggplot2::theme(
     axis.text = ggplot2::element_text(size = 9, color = "black"),
     panel.grid.major = grid_line,
     panel.grid.minor = ggplot2::element_blank(),
@@ -129,16 +120,7 @@ theme_latex <- function(gridlines = TRUE, axes = "all") {
     legend.title = ggplot2::element_text(size = 9, face = "bold"),
     panel.background = ggplot2::element_rect(fill = "white", color = NA),
     plot.background = ggplot2::element_rect(fill = "white", color = NA),
+    panel.border = ggplot2::element_rect(color = "black", size = 0.3, fill = NA),
     legend.key = ggplot2::element_blank()
   )
-
-  # Add axis lines appropriately
-  if (axes == "all") {
-    theme_obj$axis.line <- axis_line
-  } else {
-    theme_obj$axis.line.x <- if (axes %in% c("x", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
-    theme_obj$axis.line.y <- if (axes %in% c("y", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
-  }
-
-  return(theme_obj)
 }
