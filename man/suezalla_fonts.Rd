@@ -7,5 +7,6 @@
 suezalla_fonts()
 }
 \description{
-Installs and registers required fonts, including Latin Modern Roman, from local files.
+Loads Roboto and Abhaya Libre from Google Fonts and local LaTeX-like fonts.
+You must call this before plotting if you want full font rendering.
 }

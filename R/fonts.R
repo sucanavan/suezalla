@@ -1,6 +1,7 @@
 #' Register fonts for suezalla themes
 #'
-#' Installs and registers required fonts, including Latin Modern Roman, from local files.
+#' Loads Roboto and Abhaya Libre from Google Fonts and local LaTeX-like fonts.
+#' You must call this before plotting if you want full font rendering.
 #'
 #' @export
 suezalla_fonts <- function() {
@@ -11,18 +12,17 @@ suezalla_fonts <- function() {
 
   showtext::showtext_auto()
 
-  font_path <- system.file("fonts", "lmroman", package = "suezalla")
+  # Load fonts from Google
+  try(sysfonts::font_add_google("Roboto", "Roboto"), silent = TRUE)
+  try(sysfonts::font_add_google("Abhaya Libre", "abhaya"), silent = TRUE)
 
-  # Add Latin Modern Roman from local .otf
-  sysfonts::font_add(family = "latinmodern",
-                     regular = file.path(font_path, "lmroman10-regular.otf"),
-                     bold    = file.path(font_path, "lmroman10-bold.otf"),
-                     italic  = file.path(font_path, "lmroman10-italic.otf"),
-                     bolditalic = file.path(font_path, "lmroman10-bolditalic.otf"))
+  # Load local fonts from inst/fonts
+  font_dir <- system.file("fonts", package = "suezalla")
+  try(sysfonts::font_add("latinmodern", regular = file.path(font_dir, "lmroman10-regular.otf")), silent = TRUE)
+  try(sysfonts::font_add("cmuserif", regular = file.path(font_dir, "cmuserif-regular.otf")), silent = TRUE)
 
-  # Also add Roboto and Abhaya Libre from Google Fonts
-  sysfonts::font_add_google("Roboto", "Roboto")
-  sysfonts::font_add_google("Abhaya Libre", "abhaya")
+  loaded <- sysfonts::font_families()
+  message("✅ Fonts loaded: ", paste(loaded, collapse = ", "))
 
   invisible(TRUE)
 }
