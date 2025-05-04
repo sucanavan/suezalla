@@ -20,7 +20,7 @@ suezalla_fonts()
 
 `suezalla` is a lightweight R package that provides:
 
-- Custom `ggplot2` themes: `theme_magazine()`,`theme_latex()`, `theme_zombie()`, `theme_academic1940()`, and `theme_academic1940_pattern()`
+- Custom `ggplot2` themes: `theme_magazine()`, `theme_latex()`, `theme_zombie()`, `theme_academic1940()`, and `theme_academic1940_pattern()`
 - Several curated colour palettes inspired by polaroids, jam jars, retro aesthetics, zombies, and classic scientific graphics
 - Pattern fill utilities for `ggpattern`, including `suezalla_academic_style()`
 - Custom scale functions: `scale_colour_suezalla()` and `scale_fill_suezalla()`
@@ -45,23 +45,53 @@ devtools::install_github("sucanavan/suezalla")
 
 ## Available palettes
 
-Use with `suezalla_palette()`, `scale_colour_suezalla()`, or `scale_fill_suezalla()`:
+The `suezalla` package includes several curated colour palettes that you can use in your plots. Below is a visual preview of each palette:
 
-| Palette     | Description                                          | Hex codes (discrete)                      |
-|-------------|------------------------------------------------------|-------------------------------------------|
-| `polaroid`  | Soft pastel colours inspired by vintage photography | `#45AAB4`, `#038DB2`, `#206491`, `#F9637C`, `#FE7A66`, `#FBB45C` |
-| `vibrant`   | Bright, high-contrast colours                        | `#FFC567`, `#FD5A46`, `#00995E`, `#FB7DA8`, `#552CB7`, `#058CD7` |
-| `jam`       | Rich, warm colours reminiscent of jam                | `#FBC9BE`, `#DB7B65`, `#ECB865`, `#695356`, `#255F63` |
-| `corporate` | Clean, professional business tones                   | `#23C2A2`, `#EC3431`, `#FBDE21`, `#138ABD`, `#9BBAFA` |
-| `lively1`   | Energetic, colorful combinations                     | `#ED5565`, `#FFCE54`, `#48CFAD`, `#5D9CEC`, `#FC6E51`, `#A0D468`, `#4FC1E9`, `#AC92EC` |
-| `lively2`   | Another bold and dynamic palette                     | `#DA4453`, `#F6BB42`, `#37BC98`, `#4A89DC`, `#E9573F`, `#8CC152`, `#3BAFDA`, `#967ADC` |
-| `retro`     | Nostalgic, mid-century colours                       | `#E7363C`, `#F56438`, `#FCAB20`, `#59AC99`, `#3E446E` |
-| `autumn`    | Warm seasonal tones                                  | `#388388`, `#4ABFBD`, `#8AB17D`, `#E9C46A`, `#F4A261`, `#E76F51` |
-| `zombie`    | Gritty, earthy tones ideal for bold plots            | `grey70`, `#F56438`, `#59AC99` |
-| `academic`  | Greyscale palette for old-style scientific plots     | `black`, `grey10`, `grey40`, `grey70`, `white` |
+```{r palette-table, results='asis', echo=FALSE}
+palettes <- list(
+  polaroid  = c("#45AAB4", "#038DB2", "#206491", "#F9637C", "#FE7A66", "#FBB45C"),
+  vibrant   = c("#FFC567", "#FD5A46", "#00995E", "#FB7DA8", "#552CB7", "#058CD7"),
+  jam       = c("#FBC9BE", "#DB7B65", "#ECB865", "#695356", "#255F63"),
+  corporate = c("#23C2A2", "#EC3431", "#FBDE21", "#138ABD", "#9BBAFA"),
+  lively1   = c("#ED5565", "#FFCE54", "#48CFAD", "#5D9CEC", "#FC6E51", "#A0D468", "#4FC1E9", "#AC92EC"),
+  lively2   = c("#DA4453", "#F6BB42", "#37BC98", "#4A89DC", "#E9573F", "#8CC152", "#3BAFDA", "#967ADC"),
+  retro     = c("#E7363C", "#F56438", "#FCAB20", "#59AC99", "#3E446E"),
+  autumn    = c("#388388", "#4ABFBD", "#8AB17D", "#E9C46A", "#F4A261", "#E76F51"),
+  zombie    = c("grey70", "#F56438", "#59AC99"),
+  academic  = c("black", "grey10", "grey40", "grey70", "white")
+)
+
+cat("<table><thead><tr><th>Palette</th><th>Colours</th></tr></thead><tbody>")
+for (name in names(palettes)) {
+  colors <- palettes[[name]]
+  color_boxes <- paste0(
+    "<span style='display:inline-block;width:20px;height:20px;background-color:", colors,
+    ";margin-right:3px;border:1px solid #ccc' title='", colors, "'></span>"
+  )
+  cat(sprintf("<tr><td><code>%s</code></td><td>%s</td></tr>", name, paste(color_boxes, collapse = "")))
+}
+cat("</tbody></table>")
+```
+
+---
+
+## Using palettes in code
+
+To extract colours programmatically from a palette, use the `suezalla_palette()` function.
+
+### Arguments:
+
+- `palette_name`: The name of the palette you want to use, such as `"jam"` or `"autumn"`.
+- `n`: The number of colours to return.
+- `type`: `"discrete"` for exact colours or `"continuous"` for a smooth gradient (interpolated).
+
+### Examples:
 
 ```{r palette-demo, echo=TRUE, message=FALSE, warning=FALSE}
+# Return 4 discrete colours from the 'jam' palette
 suezalla_palette("jam", n = 4)
+
+# Return 10 interpolated colours from the 'autumn' palette as a gradient
 suezalla_palette("autumn", n = 10, type = "continuous")
 ```
 
@@ -148,6 +178,46 @@ ggplot(mtcars, aes(y = wt, x = mpg)) +
     y = "Miles per Gallon",
     colour = "Cylinders"
   )
+```
+
+---
+
+## Customizing plots further
+
+Although `suezalla` provides clean themes out of the box, you can further refine appearance using regular `ggplot2` theming tools.
+
+### Changing fonts
+
+Set a base font using `base_family`:
+
+```r
+theme_academic1940(base_family = "latinmodern", base_size = 14)
+```
+
+Set a global font:
+
+```r
+theme_set(theme_academic1940(base_family = "CMU Serif"))
+```
+
+---
+
+### Modifying gridlines and backgrounds
+
+To add, remove, or restyle gridlines and backgrounds, use `theme()` layering:
+
+```r
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  theme_academic1940() +
+  theme(panel.grid.major = element_line(color = "grey80"),
+        panel.background = element_rect(fill = "white"))
+```
+
+Remove all gridlines:
+
+```r
+theme_minimal() + theme(panel.grid = element_blank(), panel.background = element_blank())
 ```
 
 ---
