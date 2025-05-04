@@ -3,6 +3,7 @@
 export(scale_colour_suezalla)
 export(scale_fill_suezalla)
 export(scale_fill_zombie)
+export(suezalla_academic_style)
 export(suezalla_fonts)
 export(suezalla_fonts_zombie)
 export(suezalla_palette)

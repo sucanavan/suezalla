@@ -17,4 +17,5 @@ Imports:
     cowplot,
     lemon,
     showtext,
-    sysfonts
+    sysfonts,
+     ggpattern
