@@ -1,6 +1,6 @@
 #' Suezalla Color Palette Generator
 #'
-#' Generates a palette of any number of colors from a named preset scheme
+#' Generates a palette of any number of colors from a named preset scheme.
 #'
 #' @param name Name of the color scheme (e.g., "polaroid", "vibrant", etc.)
 #' @param n Number of colors to return
@@ -20,7 +20,8 @@ suezalla_palette <- function(name = "polaroid", n = NULL, type = c("discrete", "
     lively2   = c("#DA4453", "#F6BB42", "#37BC98", "#4A89DC", "#E9573F", "#8CC152", "#3BAFDA", "#967ADC"),
     retro     = c("#E7363C", "#F56438", "#FCAB20", "#59AC99", "#3E446E"),
     autumn    = c("#388388", "#4ABFBD", "#8AB17D", "#E9C46A", "#F4A261", "#E76F51"),
-    zombie    = c("grey70", "#F56438", "#59AC99")
+    zombie    = c("grey70", "#F56438", "#59AC99"),
+    academic  = c("black", "grey10", "grey40", "grey70", "white")
   )
 
   if (!(name %in% names(palettes))) {
@@ -41,4 +42,18 @@ suezalla_palette <- function(name = "polaroid", n = NULL, type = c("discrete", "
   } else {
     return(grDevices::colorRampPalette(pal)(n))
   }
+}
+
+#' Suezalla Pattern Fill Generator
+#'
+#' Returns a repeating vector of ggpattern fill types (e.g., "stripe", "crosshatch") for black-and-white themes.
+#'
+#' @param n Number of pattern values to return. If NULL, returns all available.
+#'
+#' @return A character vector of pattern names
+#' @export
+suezalla_patterns <- function(n = NULL) {
+  patterns <- c("stripe", "crosshatch", "circle", "none", "grid", "polygon_tiling")
+  if (is.null(n)) return(patterns)
+  return(rep_len(patterns, n))
 }
