@@ -98,19 +98,26 @@ theme_academic1940 <- function() {
 
 #' Theme: LaTeX-Style Academic Plot
 #'
-#' A vintage-style ggplot2 theme with clean black-and-white styling and optional dashed gridlines.
-#' Uses the "Abhaya Libre" font for serif styling. Supports full box axis or selective axis lines.
+#' A vintage-style ggplot2 theme with clean black-and-white styling, optional dashed gridlines,
+#' and selectable fonts for LaTeX-like output. Supports full box axis or selective axis lines.
 #'
 #' @param gridlines Logical. If TRUE (default), show light dashed major gridlines.
-#' @param axes Character. One of "all" (default), "x", "y", or "none" — controls which axis lines are shown.
+#' @param axes Character. One of "all", "both", "x", "y", or "none" — controls axis line visibility.
+#' @param font Character. Choose a font: "abhaya" (default), "CMU Serif", or "Latin Modern Roman".
 #'
 #' @return A ggplot2 theme object
 #' @export
-theme_latex <- function(gridlines = TRUE, axes = "all") {
+theme_latex <- function(gridlines = TRUE,
+                        axes = "all",
+                        font = c("abhaya", "CMU Serif", "Latin Modern Roman")) {
+
+  axes <- match.arg(axes, choices = c("all", "both", "x", "y", "none"))
+  font <- match.arg(font)
+
   grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
 
-  # Use panel.border only when full box is desired
-  panel_border <- if (axes == "all") ggplot2::element_rect(color = "black", size = 0.3, fill = NA) else ggplot2::element_blank()
+  show_box <- axes %in% c("all", "both")
+  panel_border <- if (show_box) ggplot2::element_rect(color = "black", size = 0.3, fill = NA) else ggplot2::element_blank()
   axis_line_x <- if (axes == "x") ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
   axis_line_y <- if (axes == "y") ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
 
@@ -122,7 +129,7 @@ theme_latex <- function(gridlines = TRUE, axes = "all") {
     axis.line.x = axis_line_x,
     axis.line.y = axis_line_y,
     panel.border = panel_border,
-    text = ggplot2::element_text(family = "abhaya"),
+    text = ggplot2::element_text(family = font),
     legend.position = "right",
     legend.text = ggplot2::element_text(size = 8),
     legend.title = ggplot2::element_text(size = 9, face = "bold"),
