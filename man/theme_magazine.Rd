@@ -6,13 +6,13 @@
 \usage{
 theme_magazine(
   base_size = 12,
-  font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")
+  font = c("Roboto", "latinmodern", "abhaya", "CMU Serif")
 )
 }
 \arguments{
 \item{base_size}{Base font size}
 
-\item{font}{Character. Font family to use. Options: "latinmodern", "abhaya", "CMU Serif", "Roboto"}
+\item{font}{Character. Font family to use. Options: "Roboto", "latinmodern", "abhaya", "CMU Serif"}
 }
 \value{
 A ggplot2 theme

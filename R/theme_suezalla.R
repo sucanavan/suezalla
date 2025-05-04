@@ -4,11 +4,11 @@
 #' All text in black, no background grids.
 #'
 #' @param base_size Base font size
-#' @param font Character. Font family to use. Options: "latinmodern", "abhaya", "CMU Serif", "Roboto"
+#' @param font Character. Font family to use. Options: "Roboto", "latinmodern", "abhaya", "CMU Serif"
 #' @return A ggplot2 theme
 #' @export
 theme_magazine <- function(base_size = 12,
-                           font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")) {
+                           font = c("Roboto", "latinmodern", "abhaya", "CMU Serif")) {
   font <- match.arg(font)
 
   ggplot2::theme_minimal(base_size = base_size, base_family = font) +
