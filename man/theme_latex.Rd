@@ -4,15 +4,17 @@
 \alias{theme_latex}
 \title{Theme: LaTeX-Style Academic Plot}
 \usage{
-theme_latex(gridlines = TRUE)
+theme_latex(gridlines = TRUE, axes = "all")
 }
 \arguments{
-\item{gridlines}{Logical. If TRUE (default), shows light dashed major gridlines.}
+\item{gridlines}{Logical. If TRUE (default), show light dashed major gridlines.}
+
+\item{axes}{Character. Which axes to show: "all" (default), "x", "y", or "none".}
 }
 \value{
 A ggplot2 theme object
 }
 \description{
 A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-Features serif text (Abhaya Libre), black axis box, and light dashed gridlines (optional).
+Features clean black-and-white styling, dashed gridlines, and serif text (Abhaya Libre).
 }
