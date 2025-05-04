@@ -2,15 +2,24 @@
 % Please edit documentation in R/theme_academic_style.R
 \name{theme_academic1940_pattern}
 \alias{theme_academic1940_pattern}
-\title{Theme: Academic 1940 with Patterns}
+\title{Theme: Academic 1940 with Pattern Bars}
 \usage{
-theme_academic1940_pattern()
+theme_academic1940_pattern(n = 6)
+}
+\arguments{
+\item{n}{Number of discrete groups to assign patterns and fills}
 }
 \value{
-A ggplot2 theme object
+A list of ggplot2 layers (theme, scales, geom)
 }
 \description{
-A vintage-style ggplot2 theme inspired by black-and-white academic plots.
-Designed to work with ggpattern fills and the "academic" palette.
-Uses the "Abhaya Libre" font if available.
+A vintage-style ggplot2 theme for academic-style bar plots.
+Applies black-and-white fill colors, pattern styles via ggpattern, and vintage typography.
+Uses the "Abhaya Libre" font (auto-loaded).
+}
+\examples{
+df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
+df$cyl <- factor(df$cyl)
+ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
+  theme_academic1940_pattern(n = 3)
 }

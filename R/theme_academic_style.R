@@ -1,15 +1,29 @@
-#' Theme: Academic 1940 with Patterns
+#' Theme: Academic 1940 with Pattern Bars
 #'
-#' A vintage-style ggplot2 theme inspired by black-and-white academic plots.
-#' Designed to work with ggpattern fills and the "academic" palette.
-#' Uses the "Abhaya Libre" font if available.
+#' A vintage-style ggplot2 theme for academic-style bar plots.
+#' Applies black-and-white fill colors, pattern styles via ggpattern, and vintage typography.
+#' Uses the "Abhaya Libre" font (auto-loaded).
 #'
-#' @return A ggplot2 theme object
+#' @param n Number of discrete groups to assign patterns and fills
+#' @return A list of ggplot2 layers (theme, scales, geom)
 #' @export
-#' @importFrom ggplot2 theme element_text element_blank element_line element_rect
+#' @importFrom ggplot2 theme element_text element_blank element_line element_rect scale_fill_manual scale_pattern_manual
+#' @importFrom ggpattern geom_col_pattern
 #' @importFrom lemon coord_capped_cart
-theme_academic1940_pattern <- function() {
+#' @examples
+#' df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
+#' df$cyl <- factor(df$cyl)
+#' ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
+#'   theme_academic1940_pattern(n = 3)
+theme_academic1940_pattern <- function(n = 6) {
   list(
+    ggplot2::scale_fill_manual(values = suezalla_palette("academic", n = n)),
+    ggpattern::scale_pattern_manual(values = suezalla_patterns(n)),
+    ggpattern::geom_col_pattern(
+      pattern_density = 0.4,
+      pattern_spacing = 0.02,
+      colour = "black"
+    ),
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
       plot.title = ggplot2::element_blank(),
@@ -25,27 +39,5 @@ theme_academic1940_pattern <- function() {
       plot.background = ggplot2::element_rect(fill = "white", color = NA)
     ),
     lemon::coord_capped_cart(bottom = 'both', left = 'both')
-  )
-}
-
-#' Complete Academic 1940 Style with Pattern Support
-#'
-#' Returns a list of ggplot2 components combining black-and-white color palette,
-#' manual pattern scale, and the `theme_academic1940_pattern()` theme.
-#'
-#' @param n Number of groups to assign styles to
-#' @return A list of ggplot2 components
-#' @export
-#' @importFrom ggplot2 scale_fill_manual
-#' @importFrom ggpattern scale_pattern_manual
-#' @examples
-#' ggplot(df, aes(x, y, fill = group, pattern = group)) +
-#'   geom_col_pattern() +
-#'   suezalla_academic_style(n = 3)
-suezalla_academic_style <- function(n = 6) {
-  list(
-    ggplot2::scale_fill_manual(values = suezalla_palette("academic", n = n)),
-    ggpattern::scale_pattern_manual(values = suezalla_patterns(n)),
-    theme_academic1940_pattern()
   )
 }
