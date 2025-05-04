@@ -1,22 +1,25 @@
-#' Suezalla Theme
+#' Magazine Theme
 #'
-#' A clean, minimalistic ggplot2 theme. Works best with Roboto (see `suezalla_fonts()`).
+#' A clean, minimalistic theme inspired by editorial layouts. All text in black, no background grids.
 #'
 #' @param base_size Base font size
 #' @param base_family Font family (default = "Roboto")
 #' @return A ggplot2 theme
 #' @export
-theme_suezalla <- function(base_size = 12, base_family = "Roboto") {
+theme_magazine <- function(base_size = 12, base_family = "Roboto") {
   ggplot2::theme_minimal(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(face = "bold", size = rel(1.3)),
-      plot.subtitle = ggplot2::element_text(size = rel(1)),
-      axis.title = ggplot2::element_text(size = rel(1)),
-      axis.text = ggplot2::element_text(size = rel(0.9)),
+      plot.title = ggplot2::element_text(face = "bold", size = rel(1.3), color = "black"),
+      plot.subtitle = ggplot2::element_text(size = rel(1), color = "black"),
+      axis.title = ggplot2::element_text(size = rel(1), color = "black"),
+      axis.text = ggplot2::element_text(size = rel(0.9), color = "black"),
       panel.grid.minor = ggplot2::element_blank(),
-      panel.grid.major = ggplot2::element_line(size = 0.2, colour = "gray90"),
+      panel.grid.major = ggplot2::element_blank(),
+      axis.line = ggplot2::element_line(color = "black", size = 0.3),
       plot.background = ggplot2::element_rect(fill = "white", color = NA),
-      legend.position = "bottom"
+      legend.position = "bottom",
+      legend.text = ggplot2::element_text(color = "black"),
+      legend.title = ggplot2::element_text(color = "black")
     )
 }
 
