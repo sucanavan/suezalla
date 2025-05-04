@@ -108,18 +108,21 @@ theme_academic1940 <- function() {
 #' @export
 #' @importFrom ggplot2 theme element_text element_blank element_line element_rect
 theme_latex <- function(gridlines = TRUE, axes = "all") {
-  axis_line_x <- if (axes %in% c("all", "x")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
-  axis_line_y <- if (axes %in% c("all", "y")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
-
   grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
 
-  ggplot2::theme(
+  axis_line <- switch(axes,
+                      "all"  = ggplot2::element_line(color = "black", size = 0.3),
+                      "x"    = ggplot2::element_blank(),
+                      "y"    = ggplot2::element_blank(),
+                      "none" = ggplot2::element_blank(),
+                      ggplot2::element_line(color = "black", size = 0.3) # default fallback
+  )
+
+  theme_obj <- ggplot2::theme(
     axis.text = ggplot2::element_text(size = 9, color = "black"),
     panel.grid.major = grid_line,
     panel.grid.minor = ggplot2::element_blank(),
     axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
-    axis.line.x = axis_line_x,
-    axis.line.y = axis_line_y,
     text = ggplot2::element_text(family = "abhaya"),
     legend.position = "right",
     legend.text = ggplot2::element_text(size = 8),
@@ -128,4 +131,14 @@ theme_latex <- function(gridlines = TRUE, axes = "all") {
     plot.background = ggplot2::element_rect(fill = "white", color = NA),
     legend.key = ggplot2::element_blank()
   )
+
+  # Add axis lines appropriately
+  if (axes == "all") {
+    theme_obj$axis.line <- axis_line
+  } else {
+    theme_obj$axis.line.x <- if (axes %in% c("x", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+    theme_obj$axis.line.y <- if (axes %in% c("y", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+  }
+
+  return(theme_obj)
 }
