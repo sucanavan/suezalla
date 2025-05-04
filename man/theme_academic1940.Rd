@@ -11,5 +11,6 @@ A ggplot2 theme object
 }
 \description{
 A vintage-style ggplot2 theme inspired by classic black-and-white academic plots.
-Requires "Abhaya Libre" font (auto-loaded from Google Fonts).
+Designed to work well with black-and-white color palettes and pattern fills (e.g., with \code{ggpattern}).
+Requires the "Abhaya Libre" font (auto-loaded).
 }
