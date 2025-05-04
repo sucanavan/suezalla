@@ -13,7 +13,7 @@ theme_magazine <- function(base_size = 12,
 
   ggplot2::theme_minimal(base_size = base_size, base_family = font) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(hjust = 0.5, size = rel(1.3), color = "black"),
+      plot.title = ggplot2::element_text(hjust = 0.5, size = rel(1.1), color = "black"),
       plot.subtitle = ggplot2::element_text(size = rel(1), color = "black"),
       axis.title = ggplot2::element_text(size = rel(1), color = "black"),
       axis.text = ggplot2::element_text(size = rel(0.9), color = "black"),
@@ -52,7 +52,6 @@ theme_zombie <- function(base_size = 14,
     base_theme +
       ggplot2::theme(
         text = ggplot2::element_text(family = font),
-        legend.position = "none",
         axis.line = ggplot2::element_line(size = 0.3),
         axis.title = ggplot2::element_text(color = "black", size = 12),
         axis.text = ggplot2::element_text(size = 9, color = "black"),
@@ -68,10 +67,10 @@ theme_zombie <- function(base_size = 14,
 #'
 #' A vintage-style theme inspired by mid-century academic plots.
 #'
-#' @param font Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "latinmodern".
+#' @param font Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "abhaya".
 #' @return A list: theme and coord system
 #' @export
-theme_academic1940 <- function(font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")) {
+theme_academic1940 <- function(font = c("abhaya", "latinmodern", "CMU Serif", "Roboto")) {
   font <- match.arg(font)
 
   list(
@@ -109,7 +108,7 @@ theme_latex <- function(gridlines = TRUE,
   axes <- match.arg(axes, choices = c("all", "both", "x", "y", "none"))
   font <- match.arg(font)
 
-  grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
+  grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.1) else ggplot2::element_blank()
   show_box <- axes %in% c("all", "both")
   panel_border <- if (show_box) ggplot2::element_rect(color = "black", size = 0.3, fill = NA) else ggplot2::element_blank()
   axis_line_x <- if (axes == "x") ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
