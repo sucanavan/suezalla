@@ -13,7 +13,7 @@ theme_magazine <- function(base_size = 12,
 
   ggplot2::theme_minimal(base_size = base_size, base_family = font) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(hjust = 0.5, face = "bold", size = rel(1.3), color = "black"),
+      plot.title = ggplot2::element_text(hjust = 0.5, size = rel(1.3), color = "black"),
       plot.subtitle = ggplot2::element_text(size = rel(1), color = "black"),
       axis.title = ggplot2::element_text(size = rel(1), color = "black"),
       axis.text = ggplot2::element_text(size = rel(0.9), color = "black"),
