@@ -98,22 +98,21 @@ theme_academic1940 <- function() {
 
 #' Theme: LaTeX-Style Academic Plot
 #'
-#' A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-#' Features clean black-and-white styling, optional dashed gridlines, and serif text (Abhaya Libre).
+#' A vintage-style ggplot2 theme with clean black-and-white styling and optional dashed gridlines.
+#' Uses the "Abhaya Libre" font for serif styling. Supports full box axis or selective axis lines.
 #'
 #' @param gridlines Logical. If TRUE (default), show light dashed major gridlines.
 #' @param axes Character. One of "all" (default), "x", "y", or "none" — controls which axis lines are shown.
 #'
 #' @return A ggplot2 theme object
 #' @export
-#' @importFrom ggplot2 theme element_text element_blank element_line element_rect
 theme_latex <- function(gridlines = TRUE, axes = "all") {
   grid_line <- if (gridlines) ggplot2::element_line(color = "grey80", linetype = "dashed", size = 0.2) else ggplot2::element_blank()
 
-  # Axis lines logic
-  axis_line_x <- if (axes %in% c("x", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
-  axis_line_y <- if (axes %in% c("y", "all")) ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+  # Use panel.border only when full box is desired
   panel_border <- if (axes == "all") ggplot2::element_rect(color = "black", size = 0.3, fill = NA) else ggplot2::element_blank()
+  axis_line_x <- if (axes == "x") ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
+  axis_line_y <- if (axes == "y") ggplot2::element_line(color = "black", size = 0.3) else ggplot2::element_blank()
 
   ggplot2::theme(
     axis.text = ggplot2::element_text(size = 9, color = "black"),

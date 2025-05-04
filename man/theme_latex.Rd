@@ -15,6 +15,6 @@ theme_latex(gridlines = TRUE, axes = "all")
 A ggplot2 theme object
 }
 \description{
-A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-Features clean black-and-white styling, optional dashed gridlines, and serif text (Abhaya Libre).
+A vintage-style ggplot2 theme with clean black-and-white styling and optional dashed gridlines.
+Uses the "Abhaya Libre" font for serif styling. Supports full box axis or selective axis lines.
 }
