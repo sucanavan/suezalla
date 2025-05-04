@@ -26,17 +26,12 @@ theme_magazine <- function(base_size = 12, base_family = "Roboto") {
 #' Suezalla Zombie Theme (XKCD-style)
 #'
 #' A playful zombie-style ggplot2 theme for point plots. Uses `xkcd::theme_xkcd()` if available,
-#' otherwise defaults to `cowplot::theme_cowplot()`. Automatically includes `coord_capped_cart()`
-#' for capped axes. Requires the XKCD font to be installed in your system.
+#' otherwise falls back to `cowplot::theme_cowplot()` with custom font.
 #'
 #' @param base_size Base font size
 #' @param base_family Font family to use (default = "xkcd")
-#'
-#' @return A list containing a ggplot2 theme and coordinate system
+#' @return A list: ggplot2 theme and coordinate system
 #' @export
-#' @importFrom ggplot2 element_text element_line element_rect theme
-#' @importFrom cowplot theme_cowplot
-#' @importFrom lemon coord_capped_cart
 theme_zombie <- function(base_size = 14, base_family = "xkcd") {
   use_xkcd <- requireNamespace("xkcd", quietly = TRUE)
 
@@ -67,15 +62,12 @@ theme_zombie <- function(base_size = 14, base_family = "xkcd") {
 
 #' Theme: Academic 1940
 #'
-#' A vintage-style ggplot2 theme inspired by classic black-and-white academic plots.
-#' Designed to work well with black-and-white color palettes and pattern fills (e.g., with `ggpattern`).
-#' Requires the "Abhaya Libre" font (auto-loaded).
+#' A vintage-style theme inspired by black-and-white academic plots.
 #'
-#' @return A ggplot2 theme object
+#' @param base_family Font to use (default = "abhaya")
+#' @return A list: theme and coordinate system
 #' @export
-#' @importFrom ggplot2 theme element_text element_blank element_line element_rect
-#' @importFrom lemon coord_capped_cart
-theme_academic1940 <- function() {
+theme_academic1940 <- function(base_family = "abhaya") {
   list(
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
@@ -83,7 +75,7 @@ theme_academic1940 <- function() {
       panel.grid.minor = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
       axis.line = ggplot2::element_line(color = "black", size = 0.3),
-      text = ggplot2::element_text(family = "abhaya"),
+      text = ggplot2::element_text(family = base_family),
       legend.position = "right",
       legend.text = ggplot2::element_text(size = 8),
       legend.title = ggplot2::element_text(size = 9, face = "bold"),

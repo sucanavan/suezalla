@@ -4,13 +4,14 @@
 \alias{theme_academic1940}
 \title{Theme: Academic 1940}
 \usage{
-theme_academic1940()
+theme_academic1940(base_family = "abhaya")
+}
+\arguments{
+\item{base_family}{Font to use (default = "abhaya")}
 }
 \value{
-A ggplot2 theme object
+A list: theme and coordinate system
 }
 \description{
-A vintage-style ggplot2 theme inspired by classic black-and-white academic plots.
-Designed to work well with black-and-white color palettes and pattern fills (e.g., with \code{ggpattern}).
-Requires the "Abhaya Libre" font (auto-loaded).
+A vintage-style theme inspired by black-and-white academic plots.
 }

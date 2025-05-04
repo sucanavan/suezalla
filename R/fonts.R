@@ -1,7 +1,12 @@
 #' Register fonts for suezalla themes
 #'
-#' Downloads and registers Roboto and Abhaya Libre from Google Fonts using sysfonts.
-#' You must call this before plotting if you want custom font rendering in suezalla themes.
+#' Downloads and registers fonts used across suezalla themes:
+#' - Roboto (sans-serif)
+#' - Abhaya Libre (serif)
+#' - Latin Modern Roman (LaTeX-style serif)
+#' - CMU Serif (Computer Modern alternative)
+#'
+#' Must be called once per R session before plotting if you want custom font rendering.
 #'
 #' @export
 suezalla_fonts <- function() {
@@ -10,20 +15,35 @@ suezalla_fonts <- function() {
     return(invisible(FALSE))
   }
 
-  # Register fonts
-  sysfonts::font_add_google("Roboto", "Roboto")
-  sysfonts::font_add_google("Abhaya Libre", "abhaya")
-
   # Enable font rendering
   showtext::showtext_auto()
 
-  loaded_fonts <- sysfonts::font_families()
-  if (!("Roboto" %in% loaded_fonts && "abhaya" %in% loaded_fonts)) {
-    warning("⚠ Roboto or Abhaya Libre font could not be loaded.")
-    return(invisible(FALSE))
+  # Define fonts to load: name = Google Fonts name, alias = internal name
+  fonts_to_load <- list(
+    "Roboto"               = "Roboto",
+    "Abhaya Libre"         = "abhaya",
+    "Latin Modern Roman"   = "latinmodern",
+    "CMU Serif"            = "cmuserif"
+  )
+
+  for (font in names(fonts_to_load)) {
+    alias <- fonts_to_load[[font]]
+    tryCatch({
+      sysfonts::font_add_google(name = font, family = alias)
+    }, error = function(e) {
+      warning(sprintf("⚠ Could not load font '%s': %s", font, e$message))
+    })
   }
 
-  message("✅ Fonts loaded: Roboto and Abhaya Libre")
+  # Check success
+  loaded <- sysfonts::font_families()
+  missing_fonts <- setdiff(unname(fonts_to_load), loaded)
+  if (length(missing_fonts) > 0) {
+    warning("⚠ Some fonts were not loaded: ", paste(missing_fonts, collapse = ", "))
+  } else {
+    message("✅ Fonts loaded: ", paste(unname(fonts_to_load), collapse = ", "))
+  }
+
   invisible(TRUE)
 }
 

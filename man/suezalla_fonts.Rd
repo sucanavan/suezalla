@@ -7,6 +7,14 @@
 suezalla_fonts()
 }
 \description{
-Downloads and registers Roboto and Abhaya Libre from Google Fonts using sysfonts.
-You must call this before plotting if you want custom font rendering in suezalla themes.
+Downloads and registers fonts used across suezalla themes:
+\itemize{
+\item Roboto (sans-serif)
+\item Abhaya Libre (serif)
+\item Latin Modern Roman (LaTeX-style serif)
+\item CMU Serif (Computer Modern alternative)
+}
+}
+\details{
+Must be called once per R session before plotting if you want custom font rendering.
 }

@@ -12,10 +12,9 @@ theme_zombie(base_size = 14, base_family = "xkcd")
 \item{base_family}{Font family to use (default = "xkcd")}
 }
 \value{
-A list containing a ggplot2 theme and coordinate system
+A list: ggplot2 theme and coordinate system
 }
 \description{
 A playful zombie-style ggplot2 theme for point plots. Uses \code{xkcd::theme_xkcd()} if available,
-otherwise defaults to \code{cowplot::theme_cowplot()}. Automatically includes \code{coord_capped_cart()}
-for capped axes. Requires the XKCD font to be installed in your system.
+otherwise falls back to \code{cowplot::theme_cowplot()} with custom font.
 }
