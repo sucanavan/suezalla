@@ -47,6 +47,8 @@ devtools::install_github("sucanavan/suezalla")
 
 The `suezalla` package includes several curated colour palettes that you can use in your plots. Below is a visual preview of each palette:
 
+> **Note:** The `npg` palette is based on the Nature Publishing Group (NPG) color scheme as provided by the [`ggsci`](https://cran.r-project.org/package=ggsci) package.
+
 ```{r palette-table, results='asis', echo=FALSE}
 palettes <- list(
   polaroid  = c("#45AAB4", "#038DB2", "#206491", "#F9637C", "#FE7A66", "#FBB45C"),
@@ -58,7 +60,9 @@ palettes <- list(
   retro     = c("#E7363C", "#F56438", "#FCAB20", "#59AC99", "#3E446E"),
   autumn    = c("#388388", "#4ABFBD", "#8AB17D", "#E9C46A", "#F4A261", "#E76F51"),
   zombie    = c("grey70", "#F56438", "#59AC99"),
-  academic  = c("black", "grey10", "grey40", "grey70", "white")
+  academic  = c("black", "grey10", "grey40", "grey70", "white"),
+  npg       = c("#E64B35", "#4DBBD5", "#00A087", "#3C5488", "#F39B7F",
+                "#8491B4", "#91D1C2", "#DC0000", "#7E6148", "#B09C85")
 )
 
 cat("<table><thead><tr><th>Palette</th><th>Colours</th></tr></thead><tbody>")
@@ -113,6 +117,8 @@ These are handled automatically via `sysfonts` and `showtext` when the package i
 
 ### LaTeX academic plot
 
+This plot uses `theme_latex()`, a clean black-and-white theme with a serif font designed to resemble LaTeX-style figures. It is ideal for academic publications with strict formatting requirements.
+
 ```{r latex-theme, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
   geom_point(size = 2, stroke = 0.4) +
@@ -126,6 +132,8 @@ ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
 ```
 
 ### Academic 1940
+
+This example applies `theme_academic1940()`, inspired by mid-20th-century scientific plots. It uses black outlines, serif fonts, and simple geometry to evoke a retro academic aesthetic.
 
 ```{r academic1940, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
@@ -142,6 +150,8 @@ ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
 
 ### Academic pattern style
 
+This example demonstrates `theme_academic1940_pattern()`, designed for black-and-white print or accessibility needs. It uses shape patterns (via `ggpattern`) instead of color fills.
+
 ```{r academic-pattern, echo=TRUE, message=FALSE, warning=FALSE}
 df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
 df$cyl <- factor(df$cyl)
@@ -152,10 +162,12 @@ ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
 
 ### Magazine theme
 
+The `theme_magazine()` style is designed for modern visuals with a bold font and clean grid-free layout. Combined with the `corporate` color palette, it gives a contemporary data journalism vibe.
+
 ```{r magazine, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   geom_point(size = 3) +
-  scale_colour_suezalla(palette_name = "jam") +
+  scale_colour_suezalla(palette_name = "corporate") +
   theme_magazine() +
   labs(
     title = "Car efficiency by weight",
@@ -166,6 +178,8 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
 ```
 
 ### Zombie theme
+
+A playful and gritty theme (`theme_zombie()`) with a hand-drawn feel, using the XKCD font if available. Intended for creative or informal visualizations.
 
 ```{r zombie, echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(y = wt, x = mpg)) + 
@@ -179,29 +193,3 @@ ggplot(mtcars, aes(y = wt, x = mpg)) +
     colour = "Cylinders"
   )
 ```
-
----
-
-## Customizing plots further
-
-Although `suezalla` provides clean themes out of the box, you can further refine appearance using regular `ggplot2` theming tools.
-
-### Changing fonts
-
-Set a base font using `base_family`:
-
-```r
-theme_academic1940(base_family = "latinmodern", base_size = 14)
-```
-
-Set a global font:
-
-```r
-theme_set(theme_academic1940(base_family = "CMU Serif"))
-```
-
----
-
-## License
-
-MIT © Susan Canavan, 2025

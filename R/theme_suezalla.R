@@ -44,7 +44,6 @@ theme_academic1940 <- function(font = c("abhaya", "latinmodern", "CMU Serif", "R
       axis.text = ggplot2::element_text(size = 9, color = "black"),
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
-      axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
       axis.line = ggplot2::element_line(color = "black", size = 0.3),
       text = ggplot2::element_text(family = font),
       legend.position = "right",

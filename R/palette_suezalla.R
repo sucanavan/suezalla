@@ -21,7 +21,8 @@ suezalla_palette <- function(name = "polaroid", n = NULL, type = c("discrete", "
     retro     = c("#E7363C", "#F56438", "#FCAB20", "#59AC99", "#3E446E"),
     autumn    = c("#388388", "#4ABFBD", "#8AB17D", "#E9C46A", "#F4A261", "#E76F51"),
     zombie    = c("grey70", "#F56438", "#59AC99"),
-    academic  = c("black", "grey10", "grey40", "grey70", "white")
+    academic  = c("black", "grey10", "grey40", "grey70", "white"),
+    npg       = c("#E64B35", "#4DBBD5", "#00A087", "#3C5488", "#F39B7F", "#8491B4", "#91D1C2", "#DC0000", "#7E6148", "#B09C85")
   )
 
   if (!(name %in% names(palettes))) {
@@ -57,4 +58,3 @@ suezalla_patterns <- function(n = NULL) {
   if (is.null(n)) return(patterns)
   return(rep_len(patterns, n))
 }
-
