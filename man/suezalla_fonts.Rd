@@ -7,14 +7,5 @@
 suezalla_fonts()
 }
 \description{
-Downloads and registers fonts used across suezalla themes:
-\itemize{
-\item Roboto (sans-serif)
-\item Abhaya Libre (serif)
-\item Latin Modern Roman (LaTeX-style serif)
-\item CMU Serif (Computer Modern alternative)
-}
-}
-\details{
-Must be called once per R session before plotting if you want custom font rendering.
+Installs and registers required fonts, including Latin Modern Roman, from local files.
 }
