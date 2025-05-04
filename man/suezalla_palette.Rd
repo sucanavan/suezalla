@@ -21,5 +21,5 @@ suezalla_palette(
 A character vector of hex color codes
 }
 \description{
-Generates a palette of any number of colors from a named preset scheme
+Generates a palette of any number of colors from a named preset scheme.
 }

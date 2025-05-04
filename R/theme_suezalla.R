@@ -65,7 +65,8 @@ theme_zombie <- function(base_size = 14, base_family = "xkcd") {
 #' Theme: Academic 1940
 #'
 #' A vintage-style ggplot2 theme inspired by classic black-and-white academic plots.
-#' Requires "Abhaya Libre" font (auto-loaded from Google Fonts).
+#' Designed to work well with black-and-white color palettes and pattern fills (e.g., with `ggpattern`).
+#' Requires the "Abhaya Libre" font (auto-loaded).
 #'
 #' @return A ggplot2 theme object
 #' @export
@@ -76,12 +77,14 @@ theme_academic1940 <- function() {
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
       plot.title = ggplot2::element_blank(),
-      legend.position = "none",
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
       axis.line = ggplot2::element_line(color = "black", size = 0.3),
       text = ggplot2::element_text(family = "abhaya"),
+      legend.position = "right",
+      legend.text = ggplot2::element_text(size = 8),
+      legend.title = ggplot2::element_text(size = 9, face = "bold"),
       panel.background = ggplot2::element_rect(fill = "white", color = NA),
       plot.background = ggplot2::element_rect(fill = "white", color = NA)
     ),

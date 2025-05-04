@@ -57,3 +57,4 @@ suezalla_patterns <- function(n = NULL) {
   if (is.null(n)) return(patterns)
   return(rep_len(patterns, n))
 }
+
