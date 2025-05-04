@@ -7,7 +7,7 @@
 theme_latex(
   gridlines = TRUE,
   axes = "all",
-  font = c("abhaya", "CMU Serif", "latinmodern", "Roboto")
+  font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ theme_latex(
 
 \item{axes}{Character. One of "all", "both", "x", "y", or "none".}
 
-\item{font}{Font family: "abhaya", "CMU Serif", "latinmodern", "Roboto"}
+\item{font}{Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "latinmodern".}
 }
 \value{
 A ggplot2 theme

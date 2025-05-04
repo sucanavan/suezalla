@@ -4,10 +4,10 @@
 \alias{theme_academic1940}
 \title{Academic 1940 Theme}
 \usage{
-theme_academic1940(font = c("abhaya", "CMU Serif", "latinmodern", "Roboto"))
+theme_academic1940(font = c("latinmodern", "abhaya", "CMU Serif", "Roboto"))
 }
 \arguments{
-\item{font}{Font family (default = "abhaya")}
+\item{font}{Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "latinmodern".}
 }
 \value{
 A list: theme and coord system

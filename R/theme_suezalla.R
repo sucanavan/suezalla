@@ -4,11 +4,13 @@
 #' All text in black, no background grids.
 #'
 #' @param base_size Base font size
-#' @param font Character. Font family to use (default = "Roboto").
+#' @param font Character. Font family to use. Options: "latinmodern", "abhaya", "CMU Serif", "Roboto"
 #' @return A ggplot2 theme
 #' @export
-theme_magazine <- function(base_size = 12, font = c("Roboto", "abhaya", "latinmodern", "CMU Serif")) {
+theme_magazine <- function(base_size = 12,
+                           font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")) {
   font <- match.arg(font)
+
   ggplot2::theme_minimal(base_size = base_size, base_family = font) +
     ggplot2::theme(
       plot.title = ggplot2::element_text(face = "bold", size = rel(1.3), color = "black"),
@@ -28,20 +30,21 @@ theme_magazine <- function(base_size = 12, font = c("Roboto", "abhaya", "latinmo
 #' Suezalla Zombie Theme (XKCD-style)
 #'
 #' A playful theme for point plots. Uses `xkcd::theme_xkcd()` if available,
-#' otherwise falls back to `cowplot::theme_cowplot()`.
+#' otherwise falls back to `cowplot::theme_cowplot()` with custom font.
 #'
 #' @param base_size Base font size
-#' @param font Font family (default = "xkcd")
+#' @param font Font family. Options: "xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto"
 #' @return A list: theme and coordinate system
 #' @export
-theme_zombie <- function(base_size = 14, font = c("xkcd")) {
+theme_zombie <- function(base_size = 14,
+                         font = c("xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto")) {
   font <- match.arg(font)
-  use_xkcd <- requireNamespace("xkcd", quietly = TRUE)
+  use_xkcd <- (font == "xkcd") && requireNamespace("xkcd", quietly = TRUE)
 
   base_theme <- if (use_xkcd) {
     xkcd::theme_xkcd()
   } else {
-    message("xkcd package not found. Falling back to cowplot::theme_cowplot().")
+    if (font == "xkcd") message("xkcd package not found. Falling back to cowplot with specified font.")
     cowplot::theme_cowplot(font_family = font)
   }
 
@@ -65,11 +68,12 @@ theme_zombie <- function(base_size = 14, font = c("xkcd")) {
 #'
 #' A vintage-style theme inspired by mid-century academic plots.
 #'
-#' @param font Font family (default = "abhaya")
+#' @param font Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "latinmodern".
 #' @return A list: theme and coord system
 #' @export
-theme_academic1940 <- function(font = c("abhaya", "CMU Serif", "latinmodern", "Roboto")) {
+theme_academic1940 <- function(font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")) {
   font <- match.arg(font)
+
   list(
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
@@ -87,20 +91,20 @@ theme_academic1940 <- function(font = c("abhaya", "CMU Serif", "latinmodern", "R
     lemon::coord_capped_cart(bottom = 'both', left = 'both')
   )
 }
-
 #' LaTeX-Style Academic Plot Theme
 #'
 #' Clean black-and-white style with optional gridlines and font control.
 #'
 #' @param gridlines Logical. If TRUE (default), show light dashed gridlines.
 #' @param axes Character. One of "all", "both", "x", "y", or "none".
-#' @param font Font family: "abhaya", "CMU Serif", "latinmodern", "Roboto"
+#' @param font Font family: one of "latinmodern", "abhaya", "CMU Serif", "Roboto". Default is "latinmodern".
 #'
 #' @return A ggplot2 theme
 #' @export
 theme_latex <- function(gridlines = TRUE,
                         axes = "all",
-                        font = c("abhaya", "CMU Serif", "latinmodern", "Roboto")) {
+                        font = c("latinmodern", "abhaya", "CMU Serif", "Roboto")) {
+
   axes <- match.arg(axes, choices = c("all", "both", "x", "y", "none"))
   font <- match.arg(font)
 

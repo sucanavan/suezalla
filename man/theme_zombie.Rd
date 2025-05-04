@@ -4,17 +4,20 @@
 \alias{theme_zombie}
 \title{Suezalla Zombie Theme (XKCD-style)}
 \usage{
-theme_zombie(base_size = 14, font = c("xkcd"))
+theme_zombie(
+  base_size = 14,
+  font = c("xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto")
+)
 }
 \arguments{
 \item{base_size}{Base font size}
 
-\item{font}{Font family (default = "xkcd")}
+\item{font}{Font family. Options: "xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto"}
 }
 \value{
 A list: theme and coordinate system
 }
 \description{
 A playful theme for point plots. Uses \code{xkcd::theme_xkcd()} if available,
-otherwise falls back to \code{cowplot::theme_cowplot()}.
+otherwise falls back to \code{cowplot::theme_cowplot()} with custom font.
 }
