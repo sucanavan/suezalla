@@ -28,17 +28,20 @@ theme_academic1940_pattern <- function() {
   )
 }
 
-#' Complete Academic 1940 Style
+#' Complete Academic 1940 Style with Pattern Support
 #'
-#' Returns a list of ggplot2 layers combining a black-and-white palette, ggpattern fill styles, and the academic theme.
+#' Returns a list of ggplot2 components combining black-and-white color palette,
+#' manual pattern scale, and the `theme_academic1940_pattern()` theme.
 #'
-#' @param n Number of categories to style
+#' @param n Number of groups to assign styles to
 #' @return A list of ggplot2 components
 #' @export
+#' @importFrom ggplot2 scale_fill_manual
+#' @importFrom ggpattern scale_pattern_manual
 #' @examples
 #' ggplot(df, aes(x, y, fill = group, pattern = group)) +
 #'   geom_col_pattern() +
-#'   suezalla_academic_style(n = 4)
+#'   suezalla_academic_style(n = 3)
 suezalla_academic_style <- function(n = 6) {
   list(
     ggplot2::scale_fill_manual(values = suezalla_palette("academic", n = n)),
