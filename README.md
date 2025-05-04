@@ -62,9 +62,25 @@ suezalla_palette("autumn", n = 10, type = "continuous")
 
 ------------------------------------------------------------------------
 
+## Fonts
+
+The `suezalla` package automatically attempts to load custom fonts when
+attached:
+
+- **Roboto** is downloaded from Google Fonts and used in
+  `theme_suezalla()`.
+- **XKCD** is loaded from your system font folder (e.g.,
+  `~/Library/Fonts/`, `~/.fonts/`, or Windows font directory) if
+  `xkcd.ttf` is present.
+
+If the XKCD font is missing, the package will issue a startup message
+and fall back to system defaults.
+
+------------------------------------------------------------------------
+
 ## Quick examples
 
-### Classic theme with palette:
+### Classic theme with palette
 
 ``` r
 library(suezalla)
@@ -85,18 +101,25 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
 ### Zombie theme example
 
 ``` r
-# Requires xkcd font to be installed on your system
 library(suezalla)
 library(ggplot2)
-library(lemon)
 
 ggplot(mtcars, aes(y = wt, x = mpg)) + 
-  geom_point(aes(fill = cyl, size = cyl), shape = 21, alpha = 0.8) + 
+  geom_point(aes(fill = factor(cyl), size = cyl), shape = 21, alpha = 0.8) + 
   scale_fill_suezalla(palette_name = "zombie") + 
   theme_zombie() +
-  ggtitle("Theme Zombie") +
-  coord_capped_cart(bottom = 'both', left = 'both')
+  ggtitle("Zombie theme plot") +
+  lemon::coord_capped_cart(bottom = 'both', left = 'both')
 ```
+
+### Academic 1940 theme example
+
+\`\`\`r
+
+library(suezalla) library(ggplot2)
+
+ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point(shape = 1, size = 2,
+stroke = 0.4) + theme_academic1940()
 
 ------------------------------------------------------------------------
 
