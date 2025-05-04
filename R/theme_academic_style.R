@@ -21,27 +21,31 @@ theme_academic1940_pattern <- function(n = 6,
                                        pattern_key_scale_factor = 1,
                                        colour = "black",
                                        show.legend = TRUE) {
-  # BW palette and repeating patterns
   bw_palette <- suezalla_palette("academic", n = n)
   pattern_values <- suezalla_patterns(n)
+
+  bar_layer <- ggpattern::geom_bar_pattern(
+    stat = "identity",
+    pattern = "stripe",
+    pattern_spacing = pattern_spacing,
+    pattern_key_scale_factor = pattern_key_scale_factor,
+    fill = "white",
+    colour = colour,
+    show.legend = show.legend
+  )
+
+  # Add pattern_density only if it's not NULL
+  if (!is.null(pattern_density)) {
+    bar_layer$mapping <- modifyList(
+      bar_layer$mapping,
+      aes(pattern_density = pattern_density)
+    )
+  }
 
   list(
     ggplot2::scale_fill_manual(values = bw_palette),
     ggpattern::scale_pattern_manual(values = pattern_values),
-
-    # Default bar layer using ggpattern
-    ggpattern::geom_bar_pattern(
-      stat = "identity",
-      pattern = "stripe",
-      pattern_spacing = pattern_spacing,
-      pattern_density = pattern_density,
-      pattern_key_scale_factor = pattern_key_scale_factor,
-      fill = "white",
-      colour = colour,
-      show.legend = show.legend
-    ),
-
-    # Theme and coordinate styling
+    bar_layer,
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 9, color = "black"),
       plot.title = ggplot2::element_blank(),
