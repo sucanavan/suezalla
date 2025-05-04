@@ -93,3 +93,34 @@ theme_academic1940 <- function() {
     lemon::coord_capped_cart(bottom = 'both', left = 'both')
   )
 }
+
+
+
+#' Theme: LaTeX-Style Academic Plot
+#'
+#' A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
+#' Features clean black-and-white styling, capped axes, and serif text (Abhaya Libre).
+#' Designed for publication-quality graphics with minimal clutter.
+#'
+#' @return A ggplot2 theme object
+#' @export
+#' @importFrom ggplot2 theme element_text element_blank element_line element_rect
+#' @importFrom lemon coord_capped_cart
+theme_latex <- function() {
+  list(
+    ggplot2::theme(
+      axis.text = ggplot2::element_text(size = 9, color = "black"),
+      panel.grid.major = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
+      axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
+      axis.line = ggplot2::element_line(color = "black", size = 0.3),
+      text = ggplot2::element_text(family = "abhaya"),
+      legend.position = "right",
+      legend.text = ggplot2::element_text(size = 8),
+      legend.title = ggplot2::element_text(size = 9, face = "bold"),
+      panel.background = ggplot2::element_rect(fill = "white", color = NA),
+      plot.background = ggplot2::element_rect(fill = "white", color = NA)
+    ),
+    lemon::coord_capped_cart(bottom = 'both', left = 'both')
+  )
+}
