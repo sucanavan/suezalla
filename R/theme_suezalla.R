@@ -99,17 +99,19 @@ theme_academic1940 <- function() {
 #' Theme: LaTeX-Style Academic Plot
 #'
 #' A vintage-inspired ggplot2 theme mimicking LaTeX-style academic figures.
-#' Features clean black-and-white styling, full box axes, and serif text (Abhaya Libre).
-#' Designed for publication-quality graphics with minimal clutter.
+#' Features serif text (Abhaya Libre), black axis box, and light dashed gridlines (optional).
 #'
+#' @param gridlines Logical. If TRUE (default), shows light dashed major gridlines.
 #' @return A ggplot2 theme object
 #' @export
 #' @importFrom ggplot2 theme element_text element_blank element_line element_rect
-theme_latex <- function() {
+theme_latex <- function(gridlines = TRUE) {
   ggplot2::theme(
     axis.text = ggplot2::element_text(size = 9, color = "black"),
     axis.title = ggplot2::element_text(size = 10, color = "black"),
-    panel.grid.major = ggplot2::element_blank(),
+    panel.grid.major = if (gridlines) ggplot2::element_line(
+      color = "grey80", linetype = "dashed", size = 0.2
+    ) else ggplot2::element_blank(),
     panel.grid.minor = ggplot2::element_blank(),
     axis.ticks = ggplot2::element_line(color = "black", size = 0.3),
     axis.line = ggplot2::element_blank(),
@@ -117,6 +119,7 @@ theme_latex <- function() {
     legend.position = "right",
     legend.text = ggplot2::element_text(size = 8),
     legend.title = ggplot2::element_text(size = 9, face = "bold"),
+    legend.key = ggplot2::element_rect(fill = "white", color = NA),
     panel.background = ggplot2::element_rect(fill = "white", color = "black", size = 0.3),
     plot.background = ggplot2::element_rect(fill = "white", color = NA)
   )
