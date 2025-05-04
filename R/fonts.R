@@ -18,33 +18,48 @@ suezalla_fonts <- function() {
   # Enable showtext rendering
   showtext::showtext_auto()
 
-  # Try to register Roboto (Google Fonts)
+  # Font directory inside installed package
+  font_dir <- system.file("fonts", package = "suezalla")
+
+  # Check if the font directory was found
+  if (font_dir == "") {
+    warning("⚠ Could not find 'fonts' folder in installed suezalla package.")
+    return(invisible(FALSE))
+  }
+
+  # Attempt to add fonts
   tryCatch({
     sysfonts::font_add_google("Roboto", "Roboto")
   }, error = function(e) {
     warning("⚠ Could not load Roboto from Google Fonts: ", e$message)
   })
 
-  # Add Abhaya Libre (Google Fonts)
   tryCatch({
     sysfonts::font_add_google("Abhaya Libre", "abhaya")
   }, error = function(e) {
     warning("⚠ Could not load Abhaya Libre from Google Fonts: ", e$message)
   })
 
-  # Load local fonts from inst/fonts
-  font_dir <- system.file("fonts", package = "suezalla")
-
   tryCatch({
-    sysfonts::font_add("latinmodern", file.path(font_dir, "lmroman10-regular.otf"))
+    lm_path <- file.path(font_dir, "lmroman10-regular.otf")
+    if (file.exists(lm_path)) {
+      sysfonts::font_add("latinmodern", lm_path)
+    } else {
+      warning("⚠ latinmodern font file not found at: ", lm_path)
+    }
   }, error = function(e) {
-    warning("⚠ Could not load Latin Modern Roman: ", e$message)
+    warning("⚠ Could not register Latin Modern Roman: ", e$message)
   })
 
   tryCatch({
-    sysfonts::font_add("CMU Serif", file.path(font_dir, "lmromandemi10-regular.otf"))
+    cmu_path <- file.path(font_dir, "lmromandemi10-regular.otf")
+    if (file.exists(cmu_path)) {
+      sysfonts::font_add("CMU Serif", cmu_path)
+    } else {
+      warning("⚠ CMU Serif font file not found at: ", cmu_path)
+    }
   }, error = function(e) {
-    warning("⚠ Could not load CMU Serif: ", e$message)
+    warning("⚠ Could not register CMU Serif: ", e$message)
   })
 
   # Final check
