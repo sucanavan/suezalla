@@ -1734,19 +1734,6 @@ theming tools.</p>
 <pre class="r"><code>theme_set(theme_academic1940(base_family = &quot;CMU Serif&quot;))</code></pre>
 <hr />
 </div>
-<div id="modifying-gridlines-and-backgrounds" class="section level3">
-<h3>Modifying gridlines and backgrounds</h3>
-<p>To add, remove, or restyle gridlines and backgrounds, use
-<code>theme()</code> layering:</p>
-<pre class="r"><code>ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  theme_academic1940() +
-  theme(panel.grid.major = element_line(color = &quot;grey80&quot;),
-        panel.background = element_rect(fill = &quot;white&quot;))</code></pre>
-<p>Remove all gridlines:</p>
-<pre class="r"><code>theme_minimal() + theme(panel.grid = element_blank(), panel.background = element_blank())</code></pre>
-<hr />
-</div>
 </div>
 <div id="license" class="section level2">
 <h2>License</h2>

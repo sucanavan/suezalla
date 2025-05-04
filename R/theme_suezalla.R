@@ -27,41 +27,7 @@ theme_magazine <- function(base_size = 12,
     )
 }
 
-#' Suezalla Zombie Theme (XKCD-style)
-#'
-#' A playful theme for point plots. Uses `xkcd::theme_xkcd()` if available,
-#' otherwise falls back to `cowplot::theme_cowplot()` with custom font.
-#'
-#' @param base_size Base font size
-#' @param font Font family. Options: "xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto"
-#' @return A list: theme and coordinate system
-#' @export
-theme_zombie <- function(base_size = 14,
-                         font = c("xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto")) {
-  font <- match.arg(font)
-  use_xkcd <- (font == "xkcd") && requireNamespace("xkcd", quietly = TRUE)
 
-  base_theme <- if (use_xkcd) {
-    xkcd::theme_xkcd()
-  } else {
-    if (font == "xkcd") message("xkcd package not found. Falling back to cowplot with specified font.")
-    cowplot::theme_cowplot(font_family = font)
-  }
-
-  list(
-    base_theme +
-      ggplot2::theme(
-        text = ggplot2::element_text(family = font),
-        axis.line = ggplot2::element_line(size = 0.3),
-        axis.title = ggplot2::element_text(color = "black", size = 12),
-        axis.text = ggplot2::element_text(size = 9, color = "black"),
-        panel.grid.major.x = ggplot2::element_line(color = "darkgrey", linetype = 3, size = 0.2),
-        plot.title = ggplot2::element_text(color = "black", hjust = 0.5, face = "bold", size = 13),
-        plot.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA)
-      ),
-    lemon::coord_capped_cart(bottom = "both", left = "both")
-  )
-}
 
 #' Academic 1940 Theme
 #'
@@ -130,5 +96,43 @@ theme_latex <- function(gridlines = TRUE,
     panel.background = ggplot2::element_rect(fill = "white", color = NA),
     plot.background = ggplot2::element_rect(fill = "white", color = NA),
     legend.key = ggplot2::element_blank()
+  )
+}
+
+#' Suezalla Zombie Theme (XKCD-style)
+#'
+#' A playful theme for point plots. Uses `xkcd::theme_xkcd()` if available,
+#' otherwise falls back to `cowplot::theme_cowplot()` with custom font.
+#'
+#' @param base_size Base font size
+#' @param font Font family. Options: "xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto"
+#' @return A list: theme and coordinate system
+#' @export
+theme_zombie <- function(base_size = 14,
+                         font = c("xkcd", "latinmodern", "abhaya", "CMU Serif", "Roboto")) {
+  font <- match.arg(font)
+  use_xkcd <- (font == "xkcd") && requireNamespace("xkcd", quietly = TRUE)
+
+  base_theme <- if (use_xkcd) {
+    xkcd::theme_xkcd()
+  } else {
+    if (font == "xkcd") message("xkcd package not found. Falling back to cowplot with specified font.")
+    cowplot::theme_cowplot(font_family = font)
+  }
+
+  list(
+    base_theme +
+      ggplot2::theme(
+        text = ggplot2::element_text(family = font),
+        axis.line = ggplot2::element_line(size = 0.3),
+        axis.title = ggplot2::element_text(color = "black", size = 12),
+        axis.text = ggplot2::element_text(size = 9, color = "black"),
+        panel.grid.major.x = ggplot2::element_line(color = "darkgrey", linetype = 3, size = 0.2),
+        plot.title = ggplot2::element_text(color = "black", hjust = 0.5, face = "bold", size = 13),
+        plot.background = ggplot2::element_rect(fill = "#FFFDF4", color = NA),
+        legend.background = ggplot2::element_blank(),
+        legend.key = ggplot2::element_blank()
+      ),
+    lemon::coord_capped_cart(bottom = "both", left = "both")
   )
 }

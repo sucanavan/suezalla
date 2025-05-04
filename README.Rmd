@@ -202,26 +202,6 @@ theme_set(theme_academic1940(base_family = "CMU Serif"))
 
 ---
 
-### Modifying gridlines and backgrounds
-
-To add, remove, or restyle gridlines and backgrounds, use `theme()` layering:
-
-```r
-ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  theme_academic1940() +
-  theme(panel.grid.major = element_line(color = "grey80"),
-        panel.background = element_rect(fill = "white"))
-```
-
-Remove all gridlines:
-
-```r
-theme_minimal() + theme(panel.grid = element_blank(), panel.background = element_blank())
-```
-
----
-
 ## License
 
 MIT © Susan Canavan, 2025
