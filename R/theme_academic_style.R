@@ -10,6 +10,7 @@
 #' @importFrom ggplot2 theme element_text element_blank element_line element_rect scale_fill_manual scale_pattern_manual
 #' @importFrom ggpattern geom_col_pattern
 #' @importFrom lemon coord_capped_cart
+#' @importFrom ggpattern geom_col_pattern scale_pattern_manual
 #' @examples
 #' df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
 #' df$cyl <- factor(df$cyl)
