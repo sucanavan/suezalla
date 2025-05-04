@@ -5,10 +5,12 @@ suezalla
 
 `suezalla` is a lightweight R package that provides:
 
-- Custom `ggplot2` themes: `theme_suezalla()`, `theme_zombie()`, and
-  `suez_theme_vintage()`
+- Custom `ggplot2` themes: `theme_suezalla()`, `theme_zombie()`,
+  `theme_academic1940()`, and `theme_academic1940_pattern()`
 - Several curated colour palettes inspired by polaroids, jam jars, retro
-  aesthetics, zombies, and corporate tones
+  aesthetics, zombies, and classic scientific graphics
+- Pattern fill utilities for `ggpattern`, including
+  `suezalla_academic_style()`
 - Custom scale functions: `scale_colour_suezalla()` and
   `scale_fill_suezalla()`
 
@@ -34,8 +36,7 @@ devtools::install_github("sucanavan/suezalla")
 
 ## Available palettes
 
-The following named palettes are available. Use them with
-`suezalla_palette()`, `scale_colour_suezalla()`, or
+Use with `suezalla_palette()`, `scale_colour_suezalla()`, or
 `scale_fill_suezalla()`:
 
 | Palette | Description | Hex codes (discrete) |
@@ -49,8 +50,7 @@ The following named palettes are available. Use them with
 | `retro` | Nostalgic, mid-century colours | `#E7363C`, `#F56438`, `#FCAB20`, `#59AC99`, `#3E446E` |
 | `autumn` | Warm seasonal tones | `#388388`, `#4ABFBD`, `#8AB17D`, `#E9C46A`, `#F4A261`, `#E76F51` |
 | `zombie` | Gritty, earthy tones ideal for bold plots | `grey70`, `#F56438`, `#59AC99` |
-
-To preview or generate palettes in code:
+| `academic` | Greyscale palette for old-style scientific plots | `black`, `grey10`, `grey40`, `grey70`, `white` |
 
 ``` r
 # Return 4 discrete colours
@@ -64,17 +64,14 @@ suezalla_palette("autumn", n = 10, type = "continuous")
 
 ## Fonts
 
-The `suezalla` package automatically attempts to load custom fonts when
-attached:
+The `suezalla` package auto-loads:
 
-- **Roboto** is downloaded from Google Fonts and used in
-  `theme_suezalla()`.
-- **XKCD** is loaded from your system font folder (e.g.,
-  `~/Library/Fonts/`, `~/.fonts/`, or Windows font directory) if
-  `xkcd.ttf` is present.
+- **Roboto** from Google Fonts for `theme_suezalla()`
+- **XKCD** (if available locally) for `theme_zombie()`
+- **Abhaya Libre** for academic themes (`theme_academic1940()`)
 
-If the XKCD font is missing, the package will issue a startup message
-and fall back to system defaults.
+These are handled automatically via `sysfonts` and `showtext` when the
+package is attached.
 
 ------------------------------------------------------------------------
 
@@ -121,6 +118,21 @@ library(ggplot2)
 ggplot(mtcars, aes(x = mpg, y = wt)) +
   geom_point(shape = 1, size = 2, stroke = 0.4) +
   theme_academic1940()
+```
+
+### Academic pattern style (with `ggpattern`)
+
+``` r
+library(suezalla)
+library(ggplot2)
+
+# Prepare summarized data
+df <- aggregate(wt ~ cyl, data = mtcars, FUN = mean)
+df$cyl <- factor(df$cyl)
+
+# Apply theme with automatic fill and pattern
+ggplot(df, aes(x = cyl, y = wt, fill = cyl, pattern = cyl)) +
+  theme_academic1940_pattern(n = 3)
 ```
 
 ------------------------------------------------------------------------
