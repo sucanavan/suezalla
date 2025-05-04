@@ -23,8 +23,8 @@ theme_magazine <- function(base_size = 12,
       plot.background = ggplot2::element_rect(fill = "white", color = NA),
       legend.position = "bottom",
       legend.text = ggplot2::element_text(color = "black"),
-      legend.title = ggplot2::element_text(size = 9, face = "bold"),
-      plot.title = ggplot2::element_text(hjust = 0.5, face = "bold", size = 12),
+      legend.title = ggplot2::element_text(size = 9),
+      plot.title = ggplot2::element_text(hjust = 0.5, size = 12),
     )
 }
 
@@ -85,8 +85,8 @@ theme_academic1940 <- function(font = c("latinmodern", "abhaya", "CMU Serif", "R
       text = ggplot2::element_text(family = font),
       legend.position = "right",
       legend.text = ggplot2::element_text(size = 8),
-      legend.title = ggplot2::element_text(size = 9, face = "bold"),
-      plot.title = ggplot2::element_text(hjust = 0.5, face = "bold", size = 12),
+      legend.title = ggplot2::element_text(size = 9),
+      plot.title = ggplot2::element_text(hjust = 0.5, size = 12),
       panel.background = ggplot2::element_rect(fill = "white", color = NA),
       plot.background = ggplot2::element_rect(fill = "white", color = NA)
     ),
@@ -127,8 +127,8 @@ theme_latex <- function(gridlines = TRUE,
     text = ggplot2::element_text(family = font),
     legend.position = "right",
     legend.text = ggplot2::element_text(size = 8),
-    legend.title = ggplot2::element_text(size = 9, face = "bold"),
-    plot.title = ggplot2::element_text(hjust = 0.5, face = "bold", size = 12),
+    legend.title = ggplot2::element_text(size = 9),
+    plot.title = ggplot2::element_text(hjust = 0.5, size = 12),
     panel.background = ggplot2::element_rect(fill = "white", color = NA),
     plot.background = ggplot2::element_rect(fill = "white", color = NA),
     legend.key = ggplot2::element_blank()

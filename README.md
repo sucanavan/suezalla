@@ -77,7 +77,7 @@ package is attached.
 
 ## Quick examples
 
-### Classic theme with palette
+### Magazine
 
 ``` r
 library(suezalla)
@@ -86,7 +86,7 @@ library(ggplot2)
 ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   geom_point(size = 3) +
   scale_colour_suezalla(palette_name = "jam") +
-  theme_suezalla() +
+  theme_magazine() +
   labs(
     title = "Car efficiency by weight",
     x = "Weight",
@@ -95,7 +95,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
   )
 ```
 
-### Zombie theme example
+### Zombie
 
 ``` r
 library(suezalla)
@@ -105,19 +105,48 @@ ggplot(mtcars, aes(y = wt, x = mpg)) +
   geom_point(aes(fill = factor(cyl), size = cyl), shape = 21, alpha = 0.8) + 
   scale_fill_suezalla(palette_name = "zombie") + 
   theme_zombie() +
-  ggtitle("Zombie theme plot") +
-  lemon::coord_capped_cart(bottom = 'both', left = 'both')
+  labs(
+    title = "Car efficiency by weight",
+    x = "Weight",
+    y = "Miles per Gallon",
+    colour = "Cylinders"
+  )
 ```
 
-### Academic 1940 theme example
+### LaTeX academic plot (clean black & white with serif font)
 
 ``` r
 library(suezalla)
 library(ggplot2)
 
-ggplot(mtcars, aes(x = mpg, y = wt)) +
-  geom_point(shape = 1, size = 2, stroke = 0.4) +
-  theme_academic1940()
+ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
+  geom_point(size = 2, stroke = 0.4) +
+  theme_latex() +
+  labs(
+    title = "Car efficiency by weight",
+    x = "Miles per Gallon",
+    y = "Weight",
+    shape = "Carburetors"
+  )
+  
+```
+
+### Academic 1940
+
+``` r
+library(suezalla)
+library(ggplot2)
+
+ggplot(mtcars, aes(x = mpg, y = wt, shape = factor(carb))) +
+  geom_point(size = 2, stroke = 0.4, color = "black", fill = "white") +
+  scale_shape_manual(values = c(0, 1, 2, 3, 4, 5)) +  # adjust if more shapes are needed
+  theme_academic1940() +
+  labs(
+    title = "Car efficiency by weight",
+    x = "Miles per Gallon",
+    y = "Weight (1000 lbs)",
+    shape = "Carburetors"
+  )
 ```
 
 ### Academic pattern style (with `ggpattern`)

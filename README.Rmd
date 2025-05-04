@@ -1,6 +1,9 @@
 ---
 title: "suezalla"
-output: github_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 # suezalla: A custom ggplot2 theme and colour palette
