@@ -20,8 +20,8 @@ suezalla_palette <- function(name = "polaroid", n = NULL, type = c("discrete", "
     lively2   = c("#DA4453", "#F6BB42", "#37BC98", "#4A89DC", "#E9573F", "#8CC152", "#3BAFDA", "#967ADC"),
     retro     = c("#E7363C", "#F56438", "#FCAB20", "#59AC99", "#3E446E"),
     autumn    = c("#388388", "#4ABFBD", "#8AB17D", "#E9C46A", "#F4A261", "#E76F51"),
-    zombie    = c("grey70", "#F56438", "#59AC99"),
-    academic  = c("black", "grey10", "grey40", "grey70", "white"),
+    zombie    = c("#B3B3B3", "#F56438", "#59AC99")
+    academic  = c("#000000", "#1A1A1A", "#666666", "#B3B3B3", "#FFFFFF"),
     npg       = c("#E64B35", "#4DBBD5", "#00A087", "#3C5488", "#F39B7F", "#8491B4", "#91D1C2", "#DC0000", "#7E6148", "#B09C85")
   )
 
